@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Лісова Мрія: земельні ділянки по 12 соток на межі лісу, с. Здвижівка. Демо-версія сайту.">
+<meta name="description" content="Лісова Мрія: земельні ділянки по 12 соток на межі лісу, с. Здвижівка Бучанського району. Від $6 000, розтермінування до 12 місяців.">
 <title>Лісова Мрія</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,7 +114,7 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.plancard{max-width:560px}}
 
 /* stats bar */
-.statbar{position:relative;z-index:2;margin-top:clamp(-84px,-6vw,-60px);padding:0}
+.statbar{position:relative;z-index:2;margin-top:clamp(-84px,-6vw,-60px);padding:0 0 clamp(36px,5vw,72px)}
 .statbar .wrap>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--white);border-radius:var(--r) var(--r) var(--r) 6px;box-shadow:0 24px 60px rgba(14,38,32,.16)}
 .stat{padding:26px clamp(16px,2.2vw,32px);border-left:1px solid var(--line)}
 .stat:first-child{border-left:0}
@@ -140,6 +140,9 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 .card .ic{width:52px;height:52px;border-radius:50%;background:#fbe9cd;color:var(--accent-deep);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
 .card .ic svg{width:28px;height:28px}
 .card p{color:var(--muted);font-size:15.5px}
+.card.cta{background:var(--spruce);color:var(--on-dark);justify-content:center;gap:14px}
+.card.cta p{color:var(--on-dark-muted)}
+.card.cta .btn{align-self:flex-start}
 
 /* carousels on phones */
 @media (max-width:700px){
@@ -228,6 +231,8 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 .found{margin-left:auto;font-size:14.5px;color:var(--on-dark-muted);display:flex;align-items:center;gap:14px;min-height:46px}
 .found b{color:var(--accent);font-variant-numeric:lining-nums tabular-nums}
 .link-btn{background:none;border:0;padding:0;color:var(--on-dark);font:700 14px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;position:relative}
+.legend .chip{cursor:default}
 .plan-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
 .mapbox{position:relative;background:var(--deep);border:1px solid var(--line-dark);border-radius:var(--r);overflow:hidden}
 #map{display:block;width:100%;height:auto;aspect-ratio:1095/767;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
@@ -243,7 +248,10 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 .plot:hover polygon{fill:#e2f3db}
 .plot.s1:hover polygon{fill:#b6dbea}
 .plot.s2:hover polygon{fill:#3d6e5c}
-.plot.sel polygon{fill:var(--accent);stroke:#fff;stroke-width:2.5}
+.plot.vip polygon{fill:#ecd49a}
+.plot.vip:hover polygon{fill:#f8e8be}
+.plot.vip text{fill:#3b2c08}
+.plot.sel polygon,.plot.vip.sel polygon{fill:var(--accent);stroke:#fff;stroke-width:2.5}
 .plot.sel text{fill:var(--accent-ink)}
 .nolabels .plot text{display:none}
 .map-note{font:700 11px var(--body);letter-spacing:.16em;fill:#7aa392;text-transform:uppercase;pointer-events:none}
@@ -280,6 +288,7 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 .pill.s0{background:var(--free);color:#14342a}
 .pill.s1{background:var(--hold);color:#0e2d3a}
 .pill.s2{background:#4f7867;color:#fff}
+.pill.vip{background:#ecd49a;color:#3b2c08}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:12.5px;font-weight:700;padding:4px 11px;border-radius:8px;border:1px solid var(--accent);color:var(--accent)}
 @media (max-width:1040px){.plan-grid{grid-template-columns:1fr}.side{min-height:0}.found{margin-left:0;width:100%}}
@@ -287,7 +296,7 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
   #map{aspect-ratio:1/1.05}
   .filters{gap:12px}
   .filters>.field:first-child{width:100%}
-  #st-chips .chip{padding:0 12px;font-size:13.5px;gap:7px;min-height:44px}
+  .legend .chip{padding:0 12px;font-size:13.5px;gap:7px;min-height:42px}
   .f-toggle{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:12px;border:1px solid rgba(255,255,255,.26);background:var(--spruce-2);color:var(--on-dark);font:700 14.5px var(--body);cursor:pointer}
   .f-more{display:none}
   .filters.open .f-more{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
@@ -341,11 +350,13 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 @media (max-width:1000px){.loc{grid-template-columns:1fr}}
 .route{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-dark);background:var(--deep)}
 .route svg{display:block;width:100%;height:100%}
-@media (max-width:700px){.route{overflow-x:auto}.route svg{width:540px;height:auto;max-width:none}}
+@media (max-width:700px){.route{overflow-x:auto}.route svg{width:470px;height:auto;max-width:none}.rm-t text{font-size:21px}.rm-s{font-size:19px}.rm-b{font-size:20px}.rm-n{font-size:26px}}
 .times{display:flex;flex-direction:column;background:var(--spruce-2);border:1px solid var(--line-dark);border-radius:var(--r) var(--r) var(--r) 6px;padding:8px 24px 22px}
 .times ul{list-style:none;margin:0;padding:0}
 .times li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-dark)}
 .times li span{color:#dbe6dc;font-weight:600}
+.times li.hl{margin:10px -14px 0;padding:16px 14px;border:1px solid var(--accent);border-radius:14px 14px 14px 5px;background:rgba(240,163,58,.1)}
+.times li.hl b{font-size:34px}
 .times li small{display:block;font-size:13px;font-weight:500;color:var(--on-dark-muted)}
 .times li b{font:400 28px/1 var(--title);color:var(--accent);white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
 .times .btn{margin-top:20px}
@@ -470,11 +481,11 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       <span><b>Лісова Мрія</b><small>ділянки біля лісу</small></span>
     </a>
     <nav class="nav" id="nav" aria-label="Розділи сайту">
-      <a href="#pro">Про масив</a>
-      <a href="#varianty">Ділянки</a>
       <a href="#genplan">Генплан</a>
-      <a href="#umovy">Умови</a>
+      <a href="#dilyanky">Ділянки</a>
+      <a href="#perevagy">Переваги</a>
       <a href="#lokatsiya">Локація</a>
+      <a href="#faq">Питання</a>
       <a href="#kontakty">Контакти</a>
       <div class="menu-foot">
         <a class="btn btn-fill" href="#genplan">Обрати ділянку</a>
@@ -494,14 +505,14 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
   <svg class="rings bl" aria-hidden="true"><use href="#rings"/></svg>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">с. Здвижівка · 34 км від Києва</p>
+      <p class="eyebrow">с. Здвижівка · Бучанський район</p>
       <h1>Своя земля<br>на <span class="hl">узліссі</span></h1>
-      <p class="lead">338 ділянок по 12 соток у Бучанському районі. З півдня масив виходить до лісу, а до Києва близько 40 хвилин автомобілем.</p>
+      <p class="lead">Ділянки по 12 соток у Бучанському районі. З півдня масив виходить до лісу, а до Оболоні близько 50 хвилин автомобілем.</p>
       <div class="hero-cta">
         <a class="btn btn-fill" href="#genplan">Обрати ділянку <svg class="ar" aria-hidden="true"><use href="#arrow"/></svg></a>
         <a class="btn btn-ghost" href="#kontakty">Записатися на огляд</a>
       </div>
-      <p class="hero-key"><span>від <b id="st-from" class="num">—</b> за ділянку</span><span>розтермінування до 12 місяців</span><span>оформлення у нотаріуса</span></p>
+      <p class="hero-key"><span>від <b id="st-from" class="num">—</b> за ділянку</span><span>розтермінування до 12 місяців</span><span>оформлення документів</span></p>
     </div>
     <a class="plancard" href="#genplan" aria-label="Відкрити інтерактивний генплан">
       <div class="plancard-top"><span>Генплан масиву</span><span class="live">у продажу</span></div>
@@ -514,160 +525,11 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
 
 <section class="statbar">
   <div class="wrap"><div>
-    <div class="stat"><b class="num" id="st-total">338</b><span>ділянок у двох масивах</span></div>
-    <div class="stat"><b class="num" id="st-free">—</b><span>вільних зараз</span></div>
+    <div class="stat"><b class="num" id="st-total">338</b><span>ділянок у масиві</span></div>
+    <div class="stat"><b class="num" id="st-free">—</b><span>у продажу зараз</span></div>
     <div class="stat"><b class="num">12 соток</b><span>площа кожної, приблизно 30 × 40 м</span></div>
-    <div class="stat"><b class="num">41 хв</b><span>до метро «Академмістечко»</span></div>
+    <div class="stat"><b class="num">≈ 50 хв</b><span>автомобілем до Оболоні</span></div>
   </div></div>
-</section>
-
-<section id="pro">
-  <div class="wrap about">
-    <div class="head" style="margin:0">
-      <p class="eyebrow">Про масив</p>
-      <h2>Два масиви поруч, 338 рівних ділянок</h2>
-      <p class="lead">Основний масив на 297 ділянок розбитий на 11 ліній. Поруч Лісовий квартал: 41 ділянка з власними проїздами. Усі розміри взяті з плану поділу.</p>
-      <div><a class="btn btn-line" href="#genplan">Дивитися генплан <svg class="ar" aria-hidden="true"><use href="#arrow"/></svg></a></div>
-    </div>
-    <div class="dims">
-      <div class="dim"><b class="num">40,56 га</b><span>загальна площа ділянок</span></div>
-      <div class="dim"><b class="num">1 060 × 740 м</b><span>розмір території</span></div>
-      <div class="dim"><b class="num">11 ліній</b><span>в основному масиві</span></div>
-      <div class="dim"><b class="num">≈ 5 м</b><span>ширина проїздів за планом</span></div>
-      <div class="dim"><b class="num" id="forest-n">27</b><span>ділянок межують із лісом</span></div>
-      <div class="dim"><b class="num">0,12 га</b><span>площа кожної ділянки</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="t-white">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Чому тут</p>
-      <h2>Шість причин обрати «Лісову Мрію»</h2>
-    </div>
-    <div class="grid3 swipe">
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 4l7 9h-4l6 8h-5l5 7H9l5-7H9l6-8h-4z"/><path d="M18 28v5"/></svg></span><h3>Ліс одразу за ділянкою</h3><p>З півдня масив межує з лісовим фондом. Частина ділянок виходить прямо до узлісся, на генплані їх показує фільтр «Біля лісу».</p></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 12l20-5 4 17-20 5z"/><path d="M16 9.500l4 17M8 20.500l20-5"/></svg></span><h3>Рівні ділянки по 12 соток</h3><p>Усі 338 ділянок мають однакову площу 0,12 га. Більшість прямокутні: зручно поставити будинок, сад і паркомісце.</p></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M13 32L16 4M23 32L20 4M18 8v4M18 16v4M18 24v4"/></svg></span><h3>Проїзд до кожної ділянки</h3><p>Основний масив розбитий на 11 ліній. Між рядами прокладено проїзди, тож жодна ділянка не залишається без під'їзду.</p></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M9 4h13l6 6v22H9z"/><path d="M22 4v6h6M13 18h10M13 23h10"/></svg></span><h3>Окремий кадастровий номер</h3><p>Кожна ділянка оформлюється як окремий об'єкт. Угода укладається у нотаріуса, право власності реєструється на вас.</p></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="5" y="7" width="26" height="24" rx="2"/><path d="M5 14h26M11 4v6M25 4v6M12 21h4M20 21h4M12 26h4"/></svg></span><h3>Розтермінування без переплати</h3><p>Перший внесок від 30%, решта рівними частинами до 12 місяців. Ціна фіксується в день підписання договору.</p></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 33s10-9.500 10-18a10 10 0 10-20 0c0 8.500 10 18 10 18z"/><circle cx="18" cy="15" r="3.500"/></svg></span><h3>34 км до Києва</h3><p>Дорога до метро «Академмістечко» займає близько 40 хвилин. До Гостомеля 15 хвилин, до Бучі 20.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="t-white" id="galereya" style="padding-top:0">
-  <div class="wrap">
-    <div class="head row">
-      <div class="head" style="margin:0">
-        <p class="eyebrow">Галерея</p>
-        <h2>Як тут може бути</h2>
-      </div>
-      <div class="tabs" role="tablist" aria-label="Розділи галереї">
-        <button class="tab" role="tab" type="button" aria-selected="true" data-g="g1">Ліс</button>
-        <button class="tab" role="tab" type="button" aria-selected="false" data-g="g2">Територія</button>
-        <button class="tab" role="tab" type="button" aria-selected="false" data-g="g3">Життя за містом</button>
-      </div>
-    </div>
-    <div class="gal swipe" id="g1">
-      <figure><img src="img/forest-light.jpg" alt="Сонячне світло між деревами в лісі" loading="lazy"><figcaption>Ліс починається одразу за південною межею масиву</figcaption></figure>
-      <figure><img src="img/forest-road.jpg" alt="Дорога через сосновий ліс" loading="lazy"><figcaption>Лісові дороги для прогулянок і велосипеда</figcaption></figure>
-      <figure><img src="img/path.jpg" alt="Стежка серед хвойних дерев" loading="lazy"><figcaption>Гриби та ягоди за кілька хвилин пішки</figcaption></figure>
-    </div>
-    <div class="gal swipe" id="g2" hidden>
-      <figure><img src="img/aerial.jpg" alt="Поля та ліс із висоти" loading="lazy"><figcaption>Рівна місцевість, поля й ліс довкола</figcaption></figure>
-      <figure><img src="img/dirt-road.jpg" alt="Ґрунтова дорога вздовж соснового лісу" loading="lazy"><figcaption>Проїзди між лініями</figcaption></figure>
-      <figure><img src="img/aerial2.jpg" alt="Ділянки землі з висоти" loading="lazy"><figcaption>Простір без щільної забудови</figcaption></figure>
-    </div>
-    <div class="gal swipe" id="g3" hidden>
-      <figure><img src="img/barn.jpg" alt="Сучасний темний будинок на галявині біля лісу" loading="lazy"><figcaption>На 12 сотках вміщуються будинок, тераса і сад</figcaption></figure>
-      <figure><img src="img/house-modern.jpg" alt="Сучасний будинок із панорамними вікнами серед дерев" loading="lazy"><figcaption>Панорамні вікна з видом на сосни</figcaption></figure>
-      <figure><img src="img/mist.jpg" alt="Ранковий туман на лісовій дорозі" loading="lazy"><figcaption>Тихі ранки далеко від траси</figcaption></figure>
-    </div>
-    <p class="note">Фото ілюстративні. Зйомку самої території додамо перед запуском сайту.</p>
-  </div>
-</section>
-
-<section id="varianty">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Доступні варіанти</p>
-      <h2>Чотири типи ділянок</h2>
-      <p class="lead">Кнопка під карткою покаже на генплані всі вільні ділянки цього типу.</p>
-    </div>
-    <div class="grid4 swipe" id="vars"></div>
-  </div>
-</section>
-
-<section class="t-white">
-  <div class="wrap own">
-    <div>
-      <div class="head">
-        <p class="eyebrow">Що отримує власник</p>
-        <h2>Земля у власності, а не пай чи оренда</h2>
-        <p class="lead">Ви купуєте окрему ділянку з власним кадастровим номером і розпоряджаєтеся нею без обмежень.</p>
-      </div>
-      <ul class="checks">
-        <li><div><b>Ділянка у приватній власності</b><span>Договір купівлі-продажу у нотаріуса і запис у реєстрі прав.</span></div></li>
-        <li><div><b>Право будувати</b><span>Цільове призначення дозволяє звести житловий будинок.</span></div></li>
-        <li><div><b>Межі винесені на місцевість</b><span>На огляді менеджер покаже кутові точки саме вашої ділянки.</span></div></li>
-        <li><div><b>Під'їзд і електрика</b><span>Проїзд підходить до ділянки, лінія йде вздовж проїзду.</span></div></li>
-        <li><div><b>Вільний продаж</b><span>Ділянку можна продати, подарувати чи передати у спадок будь-коли.</span></div></li>
-      </ul>
-    </div>
-    <div class="arch">
-      <img src="img/house-modern.jpg" alt="Сучасний будинок із дерева та скла серед сосен" loading="lazy">
-      <div class="arch-tag"><b class="num">30 × 40 м</b>типовий розмір ділянки 12 соток</div>
-    </div>
-  </div>
-</section>
-
-<section class="t-white" id="umovy" style="padding-top:0">
-  <div class="wrap pay">
-    <div>
-      <div class="head" style="margin-bottom:0">
-        <p class="eyebrow">Умови оплати</p>
-        <h2>Платіть частинами, ціна фіксується в день підписання</h2>
-        <p class="lead">Перший внесок 30%, решту сплачуєте рівними частинами протягом року. Ділянку оформлюємо у нотаріуса.</p>
-      </div>
-      <div class="tiles">
-        <div class="tile"><b class="num">30%</b><strong>Перший внесок</strong><span>При підписанні договору</span></div>
-        <div class="tile"><b class="num">70%</b><strong>Частинами</strong><span>До 12 місяців, без відсотків</span></div>
-        <div class="tile"><b class="num">100%</b><strong>Одразу</strong><span>За базовою ціною</span></div>
-      </div>
-      <ul class="rates">
-        <li><span>Стандартна ділянка</span><b class="num">$450 за сотку</b></li>
-        <li><span>Кутова ділянка</span><b class="num">$480 за сотку</b></li>
-        <li><span>Ділянка біля лісу</span><b class="num">$550 за сотку</b></li>
-        <li><span>Лісовий квартал</span><b class="num">+ $40 за сотку</b></li>
-        <li><span>Оплата</span><b>у гривні за курсом НБУ на день платежу</b></li>
-      </ul>
-    </div>
-    <div class="calc" id="calc">
-      <svg class="rings" aria-hidden="true" style="width:420px;height:420px;right:-160px;top:-170px"><use href="#rings"/></svg>
-      <h3>Розрахувати графік платежів</h3>
-      <label for="c-price">Вартість ділянки
-        <select id="c-price"></select>
-      </label>
-      <label for="c-down">Перший внесок: <b id="c-down-v" class="num" style="color:#fff">30%</b>
-        <input id="c-down" type="range" min="30" max="100" step="5" value="30">
-      </label>
-      <div class="lbl">Термін
-        <div class="seg" id="c-term">
-          <button type="button" data-m="3" aria-pressed="false">3 міс.</button>
-          <button type="button" data-m="6" aria-pressed="false">6 міс.</button>
-          <button type="button" data-m="12" aria-pressed="true">12 міс.</button>
-        </div>
-      </div>
-      <div class="calc-out">
-        <div><b id="c-o1">—</b><span>перший внесок</span></div>
-        <div><b id="c-o2">—</b><span>щомісяця</span></div>
-        <div><b id="c-o3">—</b><span>разом</span></div>
-      </div>
-      <a class="btn btn-fill" href="#kontakty">Отримати розрахунок</a>
-    </div>
-  </div>
 </section>
 
 <section class="t-dark" id="genplan">
@@ -676,36 +538,10 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
     <div class="head">
       <p class="eyebrow">Генплан</p>
       <h2>Оберіть ділянку на генплані</h2>
-      <p class="lead">Натисніть на ділянку, щоб побачити ціну, статус і розташування. Фільтри залишають яскравими лише ті ділянки, що вам підходять.</p>
+      <p class="lead">Натисніть на ділянку, щоб побачити ціну, статус і розташування. Світлим позначені ділянки, які зараз у продажу.</p>
     </div>
 
-    <form class="filters" id="filters" onsubmit="return false">
-      <div class="field"><span>Статус</span>
-        <div class="chips" id="st-chips"></div>
-      </div>
-      <button type="button" class="f-toggle" id="f-toggle" aria-expanded="false">Фільтри</button>
-      <div class="f-more">
-        <label class="field" for="f-massif"><span>Масив</span>
-          <select id="f-massif"><option value="">Усі</option><option value="1">Основний масив</option><option value="2">Лісовий квартал</option></select>
-        </label>
-        <label class="field" for="f-line"><span>Лінія</span>
-          <select id="f-line"><option value="">Усі</option></select>
-        </label>
-        <label class="field" for="f-price"><span>Бюджет</span>
-          <select id="f-price"><option value="">Будь-який</option><option value="0-5500">до $5 500</option><option value="5500-6500">$5 500–6 500</option><option value="6500-99999">від $6 500</option></select>
-        </label>
-        <label class="field" for="f-num"><span>Номер</span>
-          <input id="f-num" type="text" inputmode="numeric" placeholder="напр. 47" autocomplete="off">
-        </label>
-        <div class="field wide"><span>Особливості</span>
-          <div class="chips">
-            <button type="button" class="chip" id="f-forest" aria-pressed="false">Біля лісу</button>
-            <button type="button" class="chip" id="f-corner" aria-pressed="false">Кутова</button>
-          </div>
-        </div>
-      </div>
-      <div class="found"><span>Знайдено: <b id="found">338</b> з 338</span><button type="button" class="link-btn" id="clear">Скинути</button></div>
-    </form>
+    <div class="legend" id="plan-leg" aria-label="Позначення на плані"></div>
 
     <div class="plan-grid">
       <div class="mapbox" id="mapbox">
@@ -732,57 +568,29 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
     <div class="head row">
       <div class="head" style="margin:0">
         <p class="eyebrow">Ділянки</p>
-        <h2>Список за вашими фільтрами</h2>
+        <h2>Ділянки у продажу</h2>
       </div>
-      <label class="sort" for="sort">Сортувати
-        <select id="sort"><option value="n">за номером</option><option value="pa">спершу дешевші</option><option value="pd">спершу дорожчі</option></select>
-      </label>
+      <a class="btn btn-line btn-sm" href="#genplan">Показати на генплані</a>
     </div>
     <div class="cards" id="cards"></div>
     <div class="more"><button type="button" class="btn btn-line" id="more">Показати ще</button></div>
   </div>
 </section>
 
-<section class="t-dark" id="komunikatsii">
-  <svg class="rings bl" aria-hidden="true"><use href="#rings"/></svg>
+<section class="t-white" id="perevagy">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Технічні характеристики</p>
-      <h2>Що вже є на території</h2>
+      <p class="eyebrow">Переваги</p>
+      <h2>Чому «Лісова Мрія»</h2>
     </div>
-    <div class="specs">
-      <div class="spec-col">
-        <h3>Земля і документи</h3>
-        <div class="spec"><b>Під житловий будинок</b><span>Цільове призначення: будівництво і обслуговування житлового будинку (02.01)</span></div>
-        <div class="spec"><b>338 окремих ділянок</b><span>Кадастрові номери присвоюються в процесі реєстрації поділу</span></div>
-        <div class="spec"><b>Оформлення у нотаріуса</b><span>Право власності реєструється в день угоди</span></div>
-      </div>
-      <div class="spec-col">
-        <h3>Інженерія</h3>
-        <div class="spec"><b>Електрика до 10 кВт</b><span>Лінія електропередач уздовж проїздів, підключення кожної ділянки</span></div>
-        <div class="spec"><b>Відсипані проїзди</b><span>Під'їзд до кожної ділянки в будь-яку пору року</span></div>
-        <div class="spec"><b>Власна свердловина</b><span>Воду кожен власник облаштовує на своїй ділянці</span></div>
-      </div>
+    <div class="grid3 swipe">
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 4l7 9h-4l6 8h-5l5 7H9l5-7H9l6-8h-4z"/><path d="M18 28v5"/></svg></span><h3>Ліс одразу за ділянкою</h3><p>З півдня масив межує з лісом. Частина ділянок виходить прямо до узлісся.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 12l20-5 4 17-20 5z"/><path d="M16 9.500l4 17M8 20.500l20-5"/></svg></span><h3>Рівні ділянки по 12 соток</h3><p>Стандартна ділянка має 0,12 га. Більшість прямокутні: зручно поставити будинок, сад і паркомісце.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M13 32L16 4M23 32L20 4M18 8v4M18 16v4M18 24v4"/></svg></span><h3>Проїзд до кожної ділянки</h3><p>Основний масив розбитий на 11 ліній. Між рядами прокладено проїзди, тож жодна ділянка не залишається без під'їзду.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="5" y="7" width="26" height="24" rx="2"/><path d="M5 14h26M11 4v6M25 4v6M12 21h4M20 21h4M12 26h4"/></svg></span><h3>Розтермінування до 12 місяців</h3><p>Ділянку можна оплатити частинами протягом року. Умови розповість менеджер.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 33s10-9.500 10-18a10 10 0 10-20 0c0 8.500 10 18 10 18z"/><circle cx="18" cy="15" r="3.500"/></svg></span><h3>Близько 50 хвилин до Оболоні</h3><p>Дорога йде Гостомельським шосе та Великою Кільцевою. До Гостомеля 15 хвилин, до Бучі 20.</p></div>
+      <div class="card cta"><h3>Подивіться ділянку наживо</h3><p>Менеджер зустріне на місці та покаже межі ділянки, проїзди й ліс поруч.</p><a class="btn btn-fill btn-sm" href="#kontakty">Записатися на огляд</a></div>
     </div>
-    <p class="note">Характеристики попередні й уточнюються перед запуском сайту.</p>
-  </div>
-</section>
-
-<section id="etapy">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Хід робіт</p>
-      <h2>Що вже зроблено і що попереду</h2>
-    </div>
-    <div class="tl swipe">
-      <div class="tl-i done"><time>2025</time><span class="st">Зроблено</span><h3>Викуп землі</h3><p>Два суміжні масиви оформлено на одного власника.</p></div>
-      <div class="tl-i done"><time>Весна 2026</time><span class="st">Зроблено</span><h3>Проєкт поділу</h3><p>338 ділянок по 12 соток, 11 ліній.</p></div>
-      <div class="tl-i done"><time>Літо 2026</time><span class="st">Зроблено</span><h3>Проїзди та електрика</h3><p>Відсипано проїзди, заведено лінію електропередач.</p></div>
-      <div class="tl-i now"><time>Осінь 2026</time><span class="st">Зараз</span><h3>Старт продажів</h3><p>Відкрито генплан, тривають огляди та бронювання.</p></div>
-      <div class="tl-i"><time>2027</time><span class="st">У планах</span><h3>Кадастрові номери</h3><p>Реєстрація всіх ділянок у земельному кадастрі.</p></div>
-      <div class="tl-i"><time>2027</time><span class="st">У планах</span><h3>Благоустрій</h3><p>В'їзна група, освітлення, дитячий майданчик.</p></div>
-    </div>
-    <p class="note">Терміни орієнтовні і можуть змінюватися.</p>
   </div>
 </section>
 
@@ -791,12 +599,12 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Локація</p>
-      <h2>Здвижівка, Бучанський район. 34 км від Києва</h2>
-      <p class="lead">Найшвидший шлях від метро «Академмістечко» йде через Горенку та Гостомель дорогою Т-10-11.</p>
+      <h2>Здвижівка, Бучанський район. Близько 50 хвилин від Оболоні</h2>
+      <p class="lead">З Оболоні дорога йде Великою Кільцевою та Гостомельським шосе, далі через Гостомель.</p>
     </div>
     <div class="loc">
       <div class="route" id="route">
-        <svg viewBox="0 0 1050 800" role="img" aria-label="Схема маршруту від Києва до масиву «Лісова Мрія»" preserveAspectRatio="xMidYMid slice">
+        <svg viewBox="0 0 1050 800" role="img" aria-label="Схема маршруту від Оболоні до масиву «Лісова Мрія»" preserveAspectRatio="xMidYMid slice">
           <defs>
             <pattern id="tr" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M12 30l5-9 5 9zM33 14l4-7 4 7z" fill="#17402f"/></pattern>
             <radialGradient id="kyiv" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#2b6652"/><stop offset="1" stop-color="#2b6652" stop-opacity="0"/></radialGradient>
@@ -805,7 +613,7 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
           <rect width="1050" height="800" fill="url(#tr)"/>
           <path d="M955 0C940 90 978 170 964 250c-8 50 22 82 52 96h34V0z" fill="#1c4f52" opacity=".75"/>
           <text x="1012" y="60" class="rm-w" transform="rotate(86 1012 60)">Київське вдсх.</text>
-          <ellipse cx="960" cy="690" rx="260" ry="190" fill="url(#kyiv)"/>
+          <ellipse cx="985" cy="610" rx="250" ry="200" fill="url(#kyiv)"/>
           <path d="M40 225L124 268 205 317 350 345 470 382 556 420 650 450" fill="none" stroke="#39735c" stroke-width="3"/>
           <text x="232" y="343" class="rm-r">М-07</text>
           <path d="M342 237L275 280 124 262" fill="none" stroke="#39735c" stroke-width="2"/>
@@ -826,14 +634,14 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
             <circle cx="555" cy="190" r="4"/><text x="567" y="184">Гаврилівка</text>
             <circle cx="205" cy="162" r="4"/><text x="205" y="146" text-anchor="middle">Нове Залісся</text>
           </g>
-          <path d="M342 237C400 268 440 290 475 307S580 372 612 388s52 78 93 127 55 60 57 90 0 45-4 61" fill="none" stroke="#f0a33a" stroke-width="4.500" stroke-dasharray="12 10" stroke-linecap="round"/>
-          <circle cx="757" cy="666" r="9" fill="#fff"/>
-          <text x="775" y="662" class="rm-k">Київ</text>
-          <text x="775" y="686" class="rm-s">метро «Академмістечко»</text>
+          <path d="M342 237L401 274 434 289 474 313 501 303 571 376 618 387 643 464 672 467 757 546 857 539 904 543 915 574 949 571 963 583" fill="none" stroke="#f0a33a" stroke-width="4.500" stroke-dasharray="12 10" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="963" cy="583" r="9" fill="#fff"/>
+          <text x="1000" y="640" text-anchor="end" class="rm-k">Оболонь</text>
+          <text x="1000" y="664" text-anchor="end" class="rm-s">Київ, метро «Оболонь»</text>
           <g transform="translate(560 318)">
             <rect x="-62" y="-22" width="124" height="44" rx="12" fill="#fff"/>
             <path d="M-44 4h-3v-6l3-1 3-6h12l4 6 4 1v6h-3a3 3 0 01-6 0h-8a3 3 0 01-6 0z" fill="#15352c"/>
-            <text x="14" y="6" text-anchor="middle" class="rm-b">≈ 40 хв</text>
+            <text x="14" y="6" text-anchor="middle" class="rm-b">≈ 50 хв</text>
           </g>
           <g transform="translate(342 237)">
             <circle r="66" fill="#15352c" stroke="#f0a33a" stroke-width="2"/>
@@ -846,17 +654,17 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       </div>
       <div class="times">
         <ul>
+          <li class="hl"><span>Київ, Оболонь<small>близько 40 км</small></span><b>≈ 50 хв</b></li>
           <li><span>Гостомель<small>16 км</small></span><b>15 хв</b></li>
           <li><span>Бородянка<small>14 км</small></span><b>18 хв</b></li>
           <li><span>Буча<small>17 км</small></span><b>20 хв</b></li>
           <li><span>Ірпінь<small>22 км</small></span><b>30 хв</b></li>
-          <li><span>Київ, метро «Академмістечко»<small>34 км</small></span><b>41 хв</b></li>
           <li><span>Київ, Майдан Незалежності<small>45 км</small></span><b>≈ 1 год</b></li>
         </ul>
         <a class="btn btn-fill" href="https://www.google.com/maps/dir/?api=1&destination=50.6545,30.0666" target="_blank" rel="noopener">Прокласти маршрут <svg class="ar" aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
     </div>
-    <div class="loc-foot"><span>Час автомобілем за Google Maps, без урахування заторів у години пік. Схема спрощена.</span><span class="num">Координати масиву: 50.6545, 30.0666</span></div>
+    <div class="loc-foot"><span>Час автомобілем без урахування заторів у години пік. Схема спрощена.</span><span class="num">Координати масиву: 50.6545, 30.0666</span></div>
   </div>
 </section>
 
@@ -869,12 +677,12 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       <a class="btn btn-line" data-tg href="#" target="_blank" rel="noopener">Написати в Telegram</a>
     </div>
     <div>
-      <details open><summary>Чи є у ділянок кадастрові номери?</summary><p>Великий масив поділено на 338 ділянок, кадастрові номери присвоюються в процесі реєстрації поділу. Номер конкретної ділянки менеджер надає перед угодою.</p></details>
-      <details><summary>Чи можна будувати будинок?</summary><p>Так, земля призначена для будівництва і обслуговування житлового будинку. На 12 сотках вміщуються будинок, господарські споруди і сад.</p></details>
-      <details><summary>Як забронювати ділянку?</summary><p>Залиште заявку з номером ділянки або напишіть менеджеру в Telegram. Після внеску ділянка на генплані змінює статус на «Заброньована».</p></details>
-      <details><summary>Чи можна купити в розтермінування?</summary><p>Так. Перший внесок від 30%, решта рівними платежами до 12 місяців без відсотків. Суми можна порахувати в блоці «Умови оплати».</p></details>
+      <details open><summary>Скільки коштує ділянка?</summary><p>В основному масиві від $6 000 за ділянку 12 соток, у VIP-секторі від $12 000. Точну ціну конкретної ділянки назве менеджер.</p></details>
+      <details><summary>Чи можна купити в розтермінування?</summary><p>Так, діє розтермінування до 12 місяців. Умови та графік платежів розповість менеджер.</p></details>
+      <details><summary>Як забронювати ділянку?</summary><p>Залиште заявку з номером ділянки або напишіть менеджеру в Telegram. Після бронювання ділянка зникає з продажу на генплані.</p></details>
+      <details><summary>Чи можна будувати будинок?</summary><p>Так, на ділянці можна звести будинок. На 12 сотках вміщуються будинок, господарські споруди і сад.</p></details>
       <details><summary>Як подивитися ділянку наживо?</summary><p>Запишіться на огляд через форму або телефоном. Менеджер зустріне на місці, покаже межі ділянки та сусідні варіанти.</p></details>
-      <details><summary>Скільки їхати до Києва?</summary><p>До метро «Академмістечко» 34 км, це близько 40 хвилин без заторів. До центру міста приблизно година.</p></details>
+      <details><summary>Скільки їхати до Києва?</summary><p>До Оболоні близько 40 км, це приблизно 50 хвилин без заторів. До центру міста близько години.</p></details>
     </div>
   </div>
 </section>
@@ -932,14 +740,14 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       </div>
       <div>
         <h4>Меню</h4>
-        <ul><li><a href="#pro">Про масив</a></li><li><a href="#varianty">Ділянки</a></li><li><a href="#genplan">Генплан</a></li><li><a href="#umovy">Умови оплати</a></li><li><a href="#lokatsiya">Локація</a></li><li><a href="#faq">Часті питання</a></li></ul>
+        <ul><li><a href="#genplan">Генплан</a></li><li><a href="#dilyanky">Ділянки у продажу</a></li><li><a href="#perevagy">Переваги</a></li><li><a href="#lokatsiya">Локація</a></li><li><a href="#faq">Часті питання</a></li></ul>
       </div>
       <div>
         <h4>Контакти</h4>
         <ul><li><a class="num" data-tel href="#"></a></li><li><a data-tg href="#" target="_blank" rel="noopener">Telegram менеджера</a></li><li>Щодня з 9:00 до 20:00</li></ul>
       </div>
     </div>
-    <p class="legal">© 2026 «Лісова Мрія». Демо-версія сайту: ціни, статуси, комунікації, терміни та контакти наведені для прикладу і будуть замінені фактичними даними. Генплан побудований за схемою поділу, межі орієнтовні. Фото ілюстративні.</p>
+    <p class="legal">© 2026 «Лісова Мрія». Ціни вказані в доларах США для орієнтиру, наявність і точну вартість ділянки уточнюйте у менеджера. Генплан побудований за схемою поділу, межі орієнтовні. Фото ілюстративні.</p>
   </div>
 </footer>
 
@@ -959,14 +767,15 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
 </div>
 
 <script>
-/* ====== НАЛАШТУВАННЯ: замінити на фактичні дані ====== */
+/* ====== НАЛАШТУВАННЯ: тут міняються ціни, телефон і перелік вільних ділянок ====== */
 const CONFIG = {
-  phoneText: '+380 (00) 000-00-00',
-  phoneHref: 'tel:+380000000000',
-  telegramUrl: 'https://t.me/',          // посилання на менеджера
-  leadEndpoint: '',                      // адреса сервера або вебхука, що пересилає заявку в Telegram-бота
-  sotok: 12,
-  rate: {base:450, corner:480, forest:550, quarter:40}
+  phoneText: '+380 (95) 212-12-15',
+  phoneHref: 'tel:+380952121215',
+  telegramUrl: 'https://t.me/+380952121215',          // Telegram менеджера за номером телефону
+  leadEndpoint: '',                                    // адреса сервера або вебхука, що пересилає заявку в Telegram-бота
+  priceFrom: {1:6000, 2:12000},                        // ціна «від» за ділянку: 1 основний масив, 2 VIP-сектор
+  freeMain: [104,144,161,266,271,272,273,274,284],     // вільні ділянки основного масиву
+  partial: [233,254]                                   // неповні фасадні ділянки: у продажу, ціна за запитом
 };
 const DATA = {"plots":[[1,1,1,2,0,"297,26.9 289.4,24.2 256.7,4.2 254.6,4.2 250.8,11.4 247.4,10.2 247.4,12.7 249.5,14.4 242.7,27.7 287.7,47.7",269.5,26.2],[2,1,1,0,0,"242.7,27.7 231.7,49 278,69.6 287.7,47.7",260.0,48.5],[3,1,1,0,0,"231.7,49 221,69.7 268.5,90.8 278,69.6",249.8,69.8],[4,1,1,0,0,"221,69.7 210.6,89.9 259.3,111.6 268.5,90.8",239.8,90.5],[5,1,1,0,0,"210.6,89.9 200.4,109.6 250.3,131.8 259.3,111.6",230.1,110.8],[6,1,1,0,0,"200.4,109.6 190.5,128.9 241.5,151.6 250.3,131.8",220.7,130.5],[7,1,1,0,0,"190.5,128.9 180.8,147.8 232.9,171 241.5,151.6",211.4,149.8],[8,1,1,0,0,"180.8,147.8 171.2,166.2 224.5,189.9 232.9,171",202.3,168.8],[9,1,1,0,0,"171.2,166.2 161.9,184.3 216.2,208.5 224.5,189.9",193.4,187.3],[10,1,1,0,0,"161.9,184.3 152.8,202.1 208.1,226.7 216.2,208.5",184.7,205.4],[11,1,1,0,0,"152.8,202.1 143.8,219.5 200.1,244.6 208.1,226.7",176.2,223.2],[12,1,1,0,0,"143.8,219.5 135,236.6 192.3,262.1 200.1,244.6",167.8,240.7],[13,1,1,0,0,"135,236.6 126.3,253.4 184.6,279.4 192.3,262.1",159.6,257.9],[14,1,1,0,0,"126.3,253.4 117.8,270 177.1,296.4 184.6,279.4",151.4,274.8],[15,1,1,0,0,"117.8,270 109.4,286.2 169.7,313.1 177.1,296.4",143.5,291.4],[16,1,1,0,0,"109.4,286.2 101.2,302.3 162.3,329.5 169.7,313.1",135.6,307.8],[17,1,1,0,0,"101.2,302.3 93,318 155.2,345.7 162.3,329.5",127.9,323.9],[18,1,1,0,0,"93,318 84.9,333.5 148.1,361.6 155.2,345.7",120.3,339.7],[19,1,1,0,0,"74.8,347.5 141.2,377 148.1,361.6 84.9,333.5",112.2,355.0],[20,1,1,0,0,"65.1,360.7 134.7,391.7 141.2,377 74.8,347.5",103.9,369.3],[21,1,1,3,0,"47.6,384.7 47.6,387.2 92.1,385.9 132,397.8 134.7,391.7 65.1,360.7",85.0,380.1],[22,1,2,3,0,"141.2,377.1 132,397.8 166.4,408 191,419 198.3,402.5",164.6,398.1],[23,1,2,0,0,"149,359.4 141.2,377.1 198.3,402.5 206.2,384.8",173.7,380.9],[24,1,2,0,0,"156.9,341.7 149,359.4 206.2,384.8 214.1,367.2",181.6,363.3],[25,1,2,0,0,"164.8,324.1 156.9,341.7 214.1,367.2 222,349.5",189.4,345.6],[26,1,2,0,0,"172.6,306.4 164.8,324.1 222,349.5 229.8,331.9",197.3,328.0],[27,1,2,0,0,"180.5,288.8 172.6,306.4 229.8,331.9 237.7,314.2",205.2,310.3],[28,1,2,0,0,"188.3,271.1 180.5,288.8 237.7,314.2 245.6,296.6",213.0,292.7],[29,1,2,0,0,"196.2,253.5 188.3,271.1 245.6,296.6 253.5,279",220.9,275.0],[30,1,2,0,0,"204,235.8 196.2,253.5 253.5,279 261.3,261.3",228.7,257.4],[31,1,2,0,0,"211.9,218.2 204,235.8 261.3,261.3 269.2,243.7",236.6,239.8],[32,1,2,0,0,"219.7,200.6 211.9,218.2 269.2,243.7 277,226.1",244.4,222.2],[33,1,2,0,0,"227.5,183 219.7,200.6 277,226.1 284.9,208.5",252.3,204.5],[34,1,2,0,0,"235.4,165.4 227.5,183 284.9,208.5 292.8,190.9",260.1,186.9],[35,1,2,0,0,"243.2,147.8 235.4,165.4 292.8,190.9 300.6,173.3",268.0,169.3],[36,1,2,0,0,"251,130.2 243.2,147.8 300.6,173.3 308.4,155.7",275.8,151.7],[37,1,2,0,0,"258.9,112.6 251,130.2 308.4,155.7 316.3,138.1",283.7,134.1],[38,1,2,0,0,"266.7,95 258.9,112.6 316.3,138.1 324.1,120.5",291.5,116.6],[39,1,2,0,0,"274.5,77.4 266.7,95 324.1,120.5 332,103",299.3,99.0],[40,1,2,0,0,"282.3,59.8 274.5,77.4 332,103 339.8,85.4",307.2,81.4],[41,1,2,0,0,"290.1,42.3 282.3,59.8 339.8,85.4 347.7,67.8",315.0,63.8],[42,1,2,2,0,"354.7,52.2 355.1,47.5 297,26.9 290.1,42.3 347.7,67.8",324.0,46.7],[43,1,2,2,0,"359.8,50.5 344.3,85.2 388.3,104.8 396.8,85.7 388.2,84 388.2,81.4 384.8,80.6 383.9,83.1 367.4,79.3 371.6,67 371.2,54.3 361.9,50",368.4,80.2],[44,1,2,0,0,"344.3,85.2 334,108.1 378.1,127.7 388.3,104.8",361.2,106.4],[45,1,2,0,0,"334,108.1 323.8,131.1 367.9,150.7 378.1,127.7",351.0,129.4],[46,1,2,0,0,"323.8,131.1 313.6,154 357.7,173.6 367.9,150.7",340.7,152.3],[47,1,2,0,0,"313.6,154 303.4,176.9 347.4,196.6 357.7,173.6",330.5,175.3],[48,1,2,0,0,"303.4,176.9 293.1,199.8 337.2,219.5 347.4,196.6",320.3,198.2],[49,1,2,0,0,"293.1,199.8 282.9,222.8 327,242.4 337.2,219.5",310.1,221.1],[50,1,2,0,0,"282.9,222.8 272.7,245.7 316.8,265.3 327,242.4",299.9,244.1],[51,1,2,0,0,"272.7,245.7 262.5,268.6 306.6,288.2 316.8,265.3",289.6,267.0],[52,1,2,0,0,"262.5,268.6 252.3,291.5 296.4,311.1 306.6,288.2",279.4,289.9],[53,1,2,0,0,"252.3,291.5 242.1,314.4 286.2,334.1 296.4,311.1",269.2,312.8],[54,1,2,0,0,"242.1,314.4 231.8,337.3 276,356.9 286.2,334.1",259.0,335.7],[55,1,2,0,0,"231.8,337.3 221.6,360.1 265.9,379.8 276,356.9",248.8,358.5],[56,1,2,0,0,"221.6,360.1 211.4,383 255.7,402.7 265.9,379.8",238.7,381.4],[57,1,2,0,0,"211.4,383 201.2,405.9 245.5,425.6 255.7,402.7",228.5,404.3],[58,1,2,2,0,"201.2,405.9 195.2,419.4 196.1,422.8 205.8,427.9 230.3,459.6 245.5,425.6",221.2,429.4],[59,1,3,3,0,"231.8,456.3 230.3,459.6 242.3,475 247.8,499.2 246.5,500.4 243.5,499.2 243.1,503.4 238.9,509.3 249.9,524.2 252.4,523.8 272.6,474.5",252.4,487.8],[60,1,3,0,0,"272.6,474.5 283,449.1 242.9,431.3 231.8,456.3",257.6,452.8],[61,1,3,0,0,"283,449.1 293.6,423.3 254.3,405.8 242.9,431.3",268.4,427.4],[62,1,3,0,0,"293.6,423.3 304.4,396.9 265.9,379.7 254.3,405.8",279.5,401.5],[63,1,3,0,0,"304.4,396.9 315.4,370 277.7,353.2 265.9,379.7",290.9,375.0],[64,1,3,0,0,"315.4,370 326.7,342.5 289.8,326.1 277.7,353.2",302.4,348.0],[65,1,3,0,0,"326.7,342.5 338.2,314.4 302.1,298.3 289.8,326.1",314.2,320.4],[66,1,3,0,0,"338.2,314.4 350,285.6 314.8,269.9 302.1,298.3",326.3,292.1],[67,1,3,0,0,"350,285.6 362.1,256.1 327.8,240.8 314.8,269.9",338.6,263.1],[68,1,3,0,0,"362.1,256.1 374.5,225.8 341.1,210.9 327.8,240.8",351.3,233.4],[69,1,3,0,0,"374.5,225.8 387.3,194.7 354.7,180.2 341.1,210.9",364.4,203.0],[70,1,3,0,0,"387.3,194.7 400.4,162.7 368.8,148.6 354.7,180.2",377.8,171.6],[71,1,3,0,0,"400.4,162.7 413.9,129.6 383.3,116 368.8,148.6",391.6,139.3],[72,1,3,2,0,"413.9,129.6 428.4,94.2 427.2,91.6 396.8,85.7 383.3,116",406.3,106.1],[73,1,3,2,0,"475.8,100.5 434,93.3 424.8,115.7 463,131.5",450.4,110.6],[74,1,3,0,0,"424.8,115.7 413.9,142.6 451.9,158.3 463,131.5",438.4,137.0],[75,1,3,0,2,"413.9,142.6 402.9,169.5 440.8,185.2 451.9,158.3",427.4,163.9],[76,1,3,0,0,"402.9,169.5 391.9,196.5 429.7,212.1 440.8,185.2",416.3,190.8],[77,1,3,0,0,"391.9,196.5 380.8,223.6 418.5,239.1 429.7,212.1",405.2,217.8],[78,1,3,0,0,"380.8,223.6 369.7,250.7 407.3,266.2 418.5,239.1",394.1,244.9],[79,1,3,0,0,"369.7,250.7 358.6,278 396.1,293.4 407.3,266.2",382.9,272.1],[80,1,3,0,0,"358.6,278 347.5,305.3 384.8,320.7 396.1,293.4",371.7,299.4],[81,1,3,0,0,"347.5,305.3 336.3,332.8 373.5,348.1 384.8,320.7",360.5,326.7],[82,1,3,0,0,"336.3,332.8 325.1,360.3 362.1,375.6 373.5,348.1",349.2,354.2],[83,1,3,0,0,"325.1,360.3 313.8,387.9 350.7,403.1 362.1,375.6",337.9,381.7],[84,1,3,0,2,"313.8,387.9 302.5,415.6 339.3,430.8 350.7,403.1",326.6,409.3],[85,1,3,0,1,"302.5,415.6 291.1,443.4 327.9,458.5 339.3,430.8",315.2,437.1],[86,1,3,0,0,"291.1,443.4 279.8,471.3 316.4,486.4 327.9,458.5",303.8,464.9],[87,1,3,0,0,"279.8,471.3 268.4,499.2 304.8,514.3 316.4,486.4",292.3,492.8],[88,1,3,3,2,"268.4,499.2 256.3,528.9 293.9,540.8 304.8,514.3",280.5,520.7],[89,1,4,3,1,"305.8,512 293.9,540.8 332.2,553 342.7,527.3",318.3,533.2],[90,1,4,0,0,"317,484.7 305.8,512 342.7,527.3 353.9,499.9",329.9,506.0],[91,1,4,0,0,"328.4,457.3 317,484.7 353.9,499.9 365.2,472.5",341.1,478.6],[92,1,4,0,0,"339.7,429.9 328.4,457.3 365.2,472.5 376.4,445.1",352.4,451.2],[93,1,4,0,1,"351,402.4 339.7,429.9 376.4,445.1 387.7,417.6",363.7,423.8],[94,1,4,0,0,"362.4,374.9 351,402.4 387.7,417.6 399,390",375.1,396.2],[95,1,4,0,1,"373.8,347.3 362.4,374.9 399,390 410.4,362.4",386.4,368.6],[96,1,4,0,0,"385.2,319.7 373.8,347.3 410.4,362.4 421.7,334.7",397.8,341.0],[97,1,4,0,0,"396.7,292 385.2,319.7 421.7,334.7 433.1,307",409.2,313.3],[98,1,4,0,0,"408.1,264.2 396.7,292 433.1,307 444.5,279.2",420.6,285.6],[99,1,4,0,2,"419.6,236.4 408.1,264.2 444.5,279.2 455.9,251.4",432.0,257.8],[100,1,4,0,2,"431.1,208.5 419.6,236.4 455.9,251.4 467.3,223.5",443.5,229.9],[101,1,4,0,1,"442.7,180.6 431.1,208.5 467.3,223.5 478.8,195.5",455.0,202.0],[102,1,4,0,1,"454.2,152.6 442.7,180.6 478.8,195.5 490.3,167.5",466.5,174.1],[103,1,4,0,0,"465.8,124.6 454.2,152.6 490.3,167.5 501.8,139.4",478.0,146.1],[104,1,4,2,0,"515,107.3 475.8,100.5 465.8,124.6 501.8,139.4",490.5,118.2],[105,1,4,2,0,"553.7,114.3 520.5,108.6 508.1,138.8 539.9,150.8",531.0,128.3],[106,1,4,0,2,"508.1,138.8 494.8,171.1 527.5,183.5 539.9,150.8",517.5,161.2],[107,1,4,0,0,"494.8,171.1 482,202.6 515.5,215.2 527.5,183.5",504.9,193.2],[108,1,4,0,0,"482,202.6 469.4,233.2 503.8,246.2 515.5,215.2",492.6,224.4],[109,1,4,0,0,"469.4,233.2 457.1,263.1 492.4,276.4 503.8,246.2",480.7,254.8],[110,1,4,0,0,"457.1,263.1 445.2,292.3 481.2,305.9 492.4,276.4",469.0,284.5],[111,1,4,0,0,"445.2,292.3 433.5,320.9 470.3,334.8 481.2,305.9",457.5,313.6],[112,1,4,0,0,"433.5,320.9 422,348.9 459.6,363.1 470.3,334.8",446.3,342.0],[113,1,4,0,0,"422,348.9 410.8,376.3 449.1,390.8 459.6,363.1",435.4,369.8],[114,1,4,0,0,"410.8,376.3 399.7,403.1 438.9,417.9 449.1,390.8",424.6,397.1],[115,1,4,0,0,"399.7,403.1 388.9,429.5 428.8,444.6 438.9,417.9",414.1,423.8],[116,1,4,0,2,"388.9,429.5 378.3,455.4 418.9,470.8 428.8,444.6",403.7,450.1],[117,1,4,0,0,"378.3,455.4 367.9,480.9 409.2,496.5 418.9,470.8",393.6,475.9],[118,1,4,0,0,"367.9,480.9 357.6,505.9 399.6,521.8 409.2,496.5",383.6,501.3],[119,1,4,0,0,"357.6,505.9 347.6,530.5 390.2,546.6 399.6,521.8",373.7,526.2],[120,1,4,3,0,"347.6,530.5 337.3,555.6 381.3,570.2 390.2,546.6",363.8,550.7],[121,1,5,3,2,"392.4,540.9 381.3,570.2 408.5,579.3 418.7,581.4 428.8,554.7",405.0,562.0],[122,1,5,0,2,"403.1,512.5 392.4,540.9 428.8,554.7 439.5,526.2",415.9,533.6],[123,1,5,0,1,"413.9,484 403.1,512.5 439.5,526.2 450.2,497.7",426.7,505.1],[124,1,5,0,1,"424.7,455.5 413.9,484 450.2,497.7 461,469.2",437.4,476.6],[125,1,5,0,2,"435.5,426.9 424.7,455.5 461,469.2 471.7,440.6",448.2,448.1],[126,1,5,0,1,"446.3,398.3 435.5,426.9 471.7,440.6 482.5,412",459.0,419.5],[127,1,5,0,0,"457.1,369.7 446.3,398.3 482.5,412 493.3,383.4",469.8,390.9],[128,1,5,0,0,"467.9,341.1 457.1,369.7 493.3,383.4 504.1,354.8",480.6,362.2],[129,1,5,0,0,"478.8,312.4 467.9,341.1 504.1,354.8 514.9,326.1",491.4,333.6],[130,1,5,0,0,"489.6,283.7 478.8,312.4 514.9,326.1 525.7,297.3",502.2,304.9],[131,1,5,0,0,"500.5,255 489.6,283.7 525.7,297.3 536.5,268.6",513.1,276.1],[132,1,5,0,0,"511.4,226.2 500.5,255 536.5,268.6 547.4,239.8",523.9,247.4],[133,1,5,0,0,"522.3,197.4 511.4,226.2 547.4,239.8 558.2,211",534.8,218.6],[134,1,5,0,1,"533.2,168.6 522.3,197.4 558.2,211 569.1,182.1",545.7,189.8],[135,1,5,0,1,"544.1,139.7 533.2,168.6 569.1,182.1 580,153.3",556.6,160.9],[136,1,5,2,1,"592.1,120.9 553.7,114.3 544.1,139.7 580,153.3",568.2,132.2],[137,1,5,2,0,"597.7,123 586.9,151.4 622.1,164.5 633.5,134.1 621,128.5",610.4,142.9],[138,1,5,0,1,"586.9,151.4 575.5,181.4 610.9,194.6 622.1,164.5",598.9,173.0],[139,1,5,0,1,"575.5,181.4 564.2,211.2 599.8,224.5 610.9,194.6",587.6,202.9],[140,1,5,0,0,"564.2,211.2 553,240.9 588.7,254.2 599.8,224.5",576.4,232.7],[141,1,5,0,2,"553,240.9 541.7,270.4 577.7,283.8 588.7,254.2",565.3,262.4],[142,1,5,0,2,"541.7,270.4 530.6,299.8 566.7,313.3 577.7,283.8",554.2,291.9],[143,1,5,0,0,"530.6,299.8 519.5,329.1 555.8,342.6 566.7,313.3",543.1,321.2],[144,1,5,0,0,"519.5,329.1 508.4,358.2 544.9,371.8 555.8,342.6",532.1,350.4],[145,1,5,0,0,"508.4,358.2 497.4,387.2 534.1,400.9 544.9,371.8",521.2,379.5],[146,1,5,0,0,"497.4,387.2 486.5,416.1 523.3,429.8 534.1,400.9",510.3,408.5],[147,1,5,0,1,"486.5,416.1 475.6,444.8 512.6,458.6 523.3,429.8",499.5,437.3],[148,1,5,0,1,"475.6,444.8 464.8,473.4 501.9,487.2 512.6,458.6",488.7,466.0],[149,1,5,0,2,"464.8,473.4 454,501.8 491.3,515.7 501.9,487.2",478.0,494.5],[150,1,5,0,0,"454,501.8 443.2,530.1 480.7,544.1 491.3,515.7",467.3,523.0],[151,1,5,0,0,"443.2,530.1 432.6,558.3 470.2,572.4 480.7,544.1",456.7,551.2],[152,1,5,3,0,"432.6,558.3 423.8,581.4 424.2,584.4 437.4,592 458.9,602.7 470.2,572.4",446.6,579.7],[153,1,6,3,2,"458.9,602.7 491.2,618.8 493.3,618.8 504.7,588.3 469.2,575",481.8,596.6],[154,1,6,0,0,"504.7,588.3 515.7,558.8 480.2,545.5 469.2,575",492.5,566.9],[155,1,6,0,0,"515.7,558.8 526.7,529.4 491.1,516.1 480.2,545.5",503.5,537.5],[156,1,6,0,2,"526.7,529.4 537.7,499.9 502.1,486.6 491.1,516.1",514.4,508.0],[157,1,6,0,1,"537.7,499.9 548.7,470.5 513.1,457.2 502.1,486.6",525.4,478.6],[158,1,6,0,1,"548.7,470.5 559.7,441.1 524,427.9 513.1,457.2",536.4,449.2],[159,1,6,0,0,"559.7,441.1 570.7,411.8 535,398.5 524,427.9",547.3,419.8],[160,1,6,0,0,"570.7,411.8 581.6,382.4 545.9,369.1 535,398.5",558.3,390.5],[161,1,6,0,0,"581.6,382.4 592.6,353.1 556.8,339.8 545.9,369.1",569.2,361.1],[162,1,6,0,0,"592.6,353.1 603.5,323.9 567.7,310.5 556.8,339.8",580.2,331.8],[163,1,6,0,0,"603.5,323.9 614.5,294.6 578.6,281.2 567.7,310.5",591.1,302.6],[164,1,6,0,0,"614.5,294.6 625.4,265.4 589.5,252 578.6,281.2",602.0,273.3],[165,1,6,0,2,"625.4,265.4 636.3,236.1 600.4,222.8 589.5,252",612.9,244.1],[166,1,6,0,1,"636.3,236.1 647.2,206.9 611.3,193.6 600.4,222.8",623.8,214.8],[167,1,6,0,2,"647.2,206.9 658.1,177.8 622.2,164.4 611.3,193.6",634.7,185.7],[168,1,6,2,0,"658.1,177.8 667.6,152.2 667.6,149.3 633.5,134.1 622.2,164.4",645.3,156.4],[169,1,6,2,1,"709.5,168 672.7,152.2 661.8,181.6 699.1,195.6",685.6,174.3],[170,1,6,0,0,"661.8,181.6 651.1,210.1 688.4,224.1 699.1,195.6",675.1,202.8],[171,1,6,0,1,"651.1,210.1 640.5,238.6 677.7,252.6 688.4,224.1",664.4,231.3],[172,1,6,0,1,"640.5,238.6 629.8,267.2 666.9,281.1 677.7,252.6",653.7,259.9],[173,1,6,0,2,"629.8,267.2 619.1,295.8 656.2,309.7 666.9,281.1",643.0,288.4],[174,1,6,0,2,"619.1,295.8 608.4,324.4 645.4,338.4 656.2,309.7",632.3,317.1],[175,1,6,0,1,"608.4,324.4 597.7,353.1 634.7,367.1 645.4,338.4",621.5,345.8],[176,1,6,0,1,"597.7,353.1 586.9,381.9 623.9,395.8 634.7,367.1",610.8,374.5],[177,1,6,0,2,"586.9,381.9 576.2,410.7 613.1,424.5 623.9,395.8",600.0,403.2],[178,1,6,0,2,"576.2,410.7 565.4,439.5 602.2,453.3 613.1,424.5",589.2,432.0],[179,1,6,0,0,"565.4,439.5 554.6,468.4 591.4,482.2 602.2,453.3",578.4,460.8],[180,1,6,0,2,"554.6,468.4 543.8,497.3 580.6,511.1 591.4,482.2",567.6,489.7],[181,1,6,0,2,"543.8,497.3 533,526.2 569.7,540 580.6,511.1",556.8,518.6],[182,1,6,0,0,"533,526.2 522.2,555.2 558.8,569 569.7,540",545.9,547.6],[183,1,6,0,0,"522.2,555.2 511.3,584.2 547.9,598 558.8,569",535.1,576.6],[184,1,6,3,0,"498,622.1 505.6,623.4 541.3,615.5 547.9,598 511.3,584.2 498.4,618.8",521.7,605.4],[185,1,7,3,0,"541.3,615.5 590,604.8 595.4,590.5 556.3,575.8",567.3,596.5],[186,1,7,0,0,"566.4,548.7 556.3,575.8 595.4,590.5 605.5,563.4",580.9,569.6],[187,1,7,0,0,"576.6,521.6 566.4,548.7 605.5,563.4 615.7,536.3",591.1,542.5],[188,1,7,0,0,"586.8,494.6 576.6,521.6 615.7,536.3 625.9,509.2",601.2,515.4],[189,1,7,0,0,"596.9,467.5 586.8,494.6 625.9,509.2 636,482.2",611.4,488.4],[190,1,7,0,2,"607.1,440.4 596.9,467.5 636,482.2 646.2,455.1",621.6,461.3],[191,1,7,0,2,"617.3,413.3 607.1,440.4 646.2,455.1 656.4,427.9",631.7,434.2],[192,1,7,0,1,"627.5,386.2 617.3,413.3 656.4,427.9 666.5,400.8",641.9,407.1],[193,1,7,0,1,"637.7,359.1 627.5,386.2 666.5,400.8 676.7,373.7",652.1,379.9],[194,1,7,0,2,"647.9,331.9 637.7,359.1 676.7,373.7 686.9,346.6",662.3,352.8],[195,1,7,0,2,"658.1,304.8 647.9,331.9 686.9,346.6 697.1,319.4",672.5,325.7],[196,1,7,0,0,"668.3,277.6 658.1,304.8 697.1,319.4 707.3,292.3",682.7,298.5],[197,1,7,0,0,"678.5,250.5 668.3,277.6 707.3,292.3 717.4,265.1",692.9,271.4],[198,1,7,0,0,"688.7,223.3 678.5,250.5 717.4,265.1 727.6,237.9",703.1,244.2],[199,1,7,0,0,"698.9,196.1 688.7,223.3 727.6,237.9 737.8,210.8",713.3,217.0],[200,1,7,2,0,"746.1,183.6 709.5,168 698.9,196.1 737.8,210.8 746.1,188.7",723.2,189.7],[201,1,7,2,0,"751.2,188.7 741.8,213.9 784.1,229.9 791.1,211.3 774.5,196.4 754.6,187.4",766.5,208.9],[202,1,7,0,0,"741.8,213.9 732.5,238.8 774.8,254.7 784.1,229.9",758.3,234.3],[203,1,7,0,0,"732.5,238.8 723.2,263.6 765.5,279.5 774.8,254.7",749.0,259.1],[204,1,7,0,0,"723.2,263.6 713.9,288.5 756.1,304.4 765.5,279.5",739.7,284.0],[205,1,7,0,1,"713.9,288.5 704.6,313.4 746.7,329.3 756.1,304.4",730.3,308.9],[206,1,7,0,1,"704.6,313.4 695.3,338.4 737.3,354.2 746.7,329.3",721.0,333.8],[207,1,7,0,0,"695.3,338.4 685.9,363.4 727.9,379.2 737.3,354.2",711.6,358.8],[208,1,7,0,0,"685.9,363.4 676.6,388.5 718.5,404.3 727.9,379.2",702.2,383.9],[209,1,7,0,0,"676.6,388.5 667.2,413.6 709,429.3 718.5,404.3",692.8,408.9],[210,1,7,0,0,"667.2,413.6 657.8,438.7 699.5,454.4 709,429.3",683.4,434.0],[211,1,7,0,1,"657.8,438.7 648.4,463.9 690.1,479.6 699.5,454.4",674.0,459.2],[212,1,7,0,0,"648.4,463.9 639,489.1 680.6,504.8 690.1,479.6",664.5,484.4],[213,1,7,0,0,"639,489.1 629.5,514.4 671.1,530 680.6,504.8",655.0,509.6],[214,1,7,0,0,"629.5,514.4 620.1,539.7 661.5,555.3 671.1,530",645.5,534.9],[215,1,7,0,0,"620.1,539.7 610.6,565 652,580.6 661.5,555.3",636.1,560.2],[216,1,7,3,0,"596.4,603.1 631.2,595.4 645.9,596.8 652,580.6 610.6,565",623.1,585.2],[217,1,8,3,0,"645.9,596.8 695.6,601.4 702,584.5 657,567.5",673.0,587.1],[218,1,8,0,0,"702,584.5 710.6,561.4 665.6,544.5 657,567.5",683.8,564.5],[219,1,8,0,0,"710.6,561.4 719.3,538.3 674.3,521.4 665.6,544.5",692.5,541.4],[220,1,8,0,0,"719.3,538.3 728,515.2 683,498.3 674.3,521.4",701.2,518.3],[221,1,8,0,0,"728,515.2 736.7,492.1 691.8,475.2 683,498.3",709.9,495.2],[222,1,8,0,0,"736.7,492.1 745.4,468.9 700.5,452 691.8,475.2",718.6,472.1],[223,1,8,0,0,"745.4,468.9 754,445.8 709.2,428.9 700.5,452",727.3,448.9],[224,1,8,0,2,"754,445.8 762.7,422.6 717.9,405.7 709.2,428.9",736.0,425.8],[225,1,8,0,0,"762.7,422.6 771.4,399.5 726.6,382.6 717.9,405.7",744.7,402.6],[226,1,8,0,0,"771.4,399.5 780.1,376.3 735.4,359.4 726.6,382.6",753.4,379.4],[227,1,8,0,1,"780.1,376.3 788.9,353.1 744.1,336.2 735.4,359.4",762.1,356.2],[228,1,8,0,1,"788.9,353.1 797.6,329.9 752.8,313 744.1,336.2",770.9,333.0],[229,1,8,0,0,"797.6,329.9 806.3,306.6 761.6,289.8 752.8,313",779.6,309.8],[230,1,8,0,0,"806.3,306.6 815,283.4 770.4,266.5 761.6,289.8",788.3,286.6],[231,1,8,0,0,"815,283.4 823.8,260.1 779.1,243.3 770.4,266.5",797.1,263.3],[232,1,8,2,0,"823.8,260.1 829.2,245.6 791.1,211.3 779.1,243.3",803.2,238.5],[233,1,8,2,0,"832.6,252.3 822.1,280.3 872,298.9 876.2,287.5 835.2,250.6",847.5,276.9],[234,1,8,0,2,"822.1,280.3 814.2,301.3 864.1,320 872,298.9",843.1,300.1],[235,1,8,0,2,"814.2,301.3 806.3,322.4 856.2,341.1 864.1,320",835.2,321.2],[236,1,8,0,2,"806.3,322.4 798.4,343.4 848.3,362.1 856.2,341.1",827.3,342.3],[237,1,8,0,2,"798.4,343.4 790.5,364.5 840.5,383.2 848.3,362.1",819.4,363.3],[238,1,8,0,1,"790.5,364.5 782.6,385.5 832.6,404.2 840.5,383.2",811.5,384.3],[239,1,8,0,0,"782.6,385.5 774.7,406.5 824.7,425.2 832.6,404.2",803.6,405.4],[240,1,8,0,0,"774.7,406.5 766.8,427.5 816.9,446.2 824.7,425.2",795.8,426.3],[241,1,8,0,2,"766.8,427.5 758.9,448.4 809,467.2 816.9,446.2",787.9,447.3],[242,1,8,0,2,"758.9,448.4 751,469.4 801.2,488.1 809,467.2",780.1,468.3],[243,1,8,0,2,"751,469.4 743.2,490.3 793.4,509.1 801.2,488.1",772.2,489.2],[244,1,8,0,2,"743.2,490.3 735.3,511.3 785.5,530 793.4,509.1",764.4,510.2],[245,1,8,0,2,"735.3,511.3 727.5,532.2 777.7,551 785.5,530",756.5,531.1],[246,1,8,0,2,"727.5,532.2 719.6,553.1 769.9,571.9 777.7,551",748.7,552.0],[247,1,8,0,2,"719.6,553.1 711.8,574 762.1,592.8 769.9,571.9",740.9,572.9],[248,1,8,3,2,"701.1,602.2 757.1,606.2 762.1,592.8 711.8,574",729.9,593.1],[249,1,9,3,0,"757.1,606.2 819,610.7 823,600.2 767.1,579.4",787.2,598.2],[250,1,9,0,0,"823,600.2 829.9,581.5 774.1,560.7 767.1,579.4",798.5,580.4],[251,1,9,0,0,"829.9,581.5 836.9,562.8 781.1,542 774.1,560.7",805.5,561.7],[252,1,9,0,0,"836.9,562.8 843.9,544.1 788.1,523.3 781.1,542",812.5,543.0],[253,1,9,0,0,"843.9,544.1 850.9,525.4 795.1,504.6 788.1,523.3",819.5,524.3],[254,1,9,0,2,"850.9,525.4 857.8,506.7 802.1,485.8 795.1,504.6",826.5,505.6],[255,1,9,0,2,"857.8,506.7 864.8,488 809.1,467.1 802.1,485.8",833.5,486.9],[256,1,9,0,0,"864.8,488 871.8,469.2 816.1,448.4 809.1,467.1",840.4,468.2],[257,1,9,0,0,"871.8,469.2 878.8,450.5 823.1,429.7 816.1,448.4",847.4,449.5],[258,1,9,0,0,"878.8,450.5 885.8,431.8 830.1,410.9 823.1,429.7",854.4,430.7],[259,1,9,0,0,"885.8,431.8 892.8,413 837.1,392.2 830.1,410.9",861.4,412.0],[260,1,9,0,0,"892.8,413 899.8,394.3 844.1,373.5 837.1,392.2",868.4,393.2],[261,1,9,0,0,"899.8,394.3 906.7,375.5 851.1,354.7 844.1,373.5",875.4,374.5],[262,1,9,0,2,"906.7,375.5 913.7,356.8 858.1,336 851.1,354.7",882.4,355.8],[263,1,9,0,2,"913.7,356.8 920.7,338 865.1,317.2 858.1,336",889.4,337.0],[264,1,9,2,0,"920.7,338 923,332.1 923,329.5 876.2,287.5 865.1,317.2",891.4,315.1],[265,1,9,2,0,"927.2,334.6 914.8,368.1 954.7,382.8 961.6,363.9 928.9,334.6",937.9,361.0],[266,1,9,0,0,"914.8,368.1 904.9,394.8 944.8,409.5 954.7,382.8",929.8,388.8],[267,1,9,0,2,"904.9,394.8 895,421.4 934.9,436.2 944.8,409.5",919.9,415.5],[268,1,9,0,0,"895,421.4 885.1,448.1 925.1,462.9 934.9,436.2",910.0,442.2],[269,1,9,0,2,"885.1,448.1 875.2,474.7 915.2,489.5 925.1,462.9",900.1,468.8],[270,1,9,0,0,"875.2,474.7 865.3,501.3 905.4,516.1 915.2,489.5",890.3,495.4],[271,1,9,0,0,"865.3,501.3 855.5,527.9 895.5,542.7 905.4,516.1",880.4,522.0],[272,1,9,0,0,"855.5,527.9 845.6,554.5 885.7,569.3 895.5,542.7",870.6,548.6],[273,1,9,0,0,"845.6,554.5 835.8,581 875.9,595.9 885.7,569.3",860.8,575.2],[274,1,9,3,0,"835.8,581 824.1,612.4 867.9,617.6 875.9,595.9",849.6,601.4],[275,1,10,3,1,"867.9,617.6 904.3,620 914.9,623.4 922.5,603.3 879.1,587.3",894.5,607.0],[276,1,10,0,1,"922.5,603.3 931.6,579.2 888,563.1 879.1,587.3",905.3,583.2],[277,1,10,0,1,"931.6,579.2 940.7,555.2 896.9,539 888,563.1",914.3,559.1],[278,1,10,0,0,"940.7,555.2 949.7,531.2 905.8,515 896.9,539",923.3,535.1],[279,1,10,0,0,"949.7,531.2 958.7,507.4 914.6,491.1 905.8,515",932.2,511.2],[280,1,10,0,0,"958.7,507.4 967.7,483.6 923.4,467.2 914.6,491.1",941.1,487.3],[281,1,10,0,2,"967.7,483.6 976.6,459.9 932.2,443.5 923.4,467.2",950.0,463.6],[282,1,10,0,0,"976.6,459.9 985.5,436.4 941,419.9 932.2,443.5",958.8,439.9],[283,1,10,0,0,"985.5,436.4 994.4,412.9 949.7,396.3 941,419.9",967.6,416.3],[284,1,10,2,0,"994.4,412.9 999.3,399.9 997.6,396.1 961.6,363.9 949.7,396.3",973.8,391.2],[285,1,10,2,0,"1003.5,402.9 990,438.6 1025,452.3 1034.2,429 1005.2,402.9",1012.1,429.6],[286,1,10,0,0,"990,438.6 978.5,469 1013.1,482.6 1025,452.3",1001.6,460.6],[287,1,10,0,0,"978.5,469 966.8,499.8 1001,513.3 1013.1,482.6",989.9,491.2],[288,1,10,0,0,"966.8,499.8 955,531 988.8,544.3 1001,513.3",977.9,522.1],[289,1,10,0,0,"955,531 943.1,562.5 976.5,575.6 988.8,544.3",965.9,553.3],[290,1,10,0,0,"943.1,562.5 931,594.4 964,607.4 976.5,575.6",953.7,585.0],[291,1,10,3,2,"931,594.4 919.6,624.7 921.7,627.7 951.3,639.8 964,607.4",941.4,617.0],[292,1,11,3,0,"951.3,639.8 974.3,649.3 976.4,648.9 994,610.5 967,599.9",972.2,624.7],[293,1,11,0,0,"994,610.5 1010.6,574.3 981.5,562.8 967,599.9",988.4,586.6],[294,1,11,0,0,"1010.6,574.3 1026.2,540.5 995.1,528.3 981.5,562.8",1003.4,551.3],[295,1,11,0,0,"1026.2,540.5 1040.8,508.6 1007.9,495.7 995.1,528.3",1017.6,518.1],[296,1,11,0,0,"1040.8,508.6 1054.6,478.5 1020,464.9 1007.9,495.7",1030.9,486.8],[297,1,11,2,0,"1054.6,478.5 1064.6,456.8 1063.8,453.8 1056.5,449.1 1034.2,429 1020,464.9",1042.3,456.3],[298,2,0,2,0,"31.5,393 87.7,391.2 97.3,394 83.3,427.7",70.8,404.0],[299,2,0,0,0,"97.5,394.3 128.2,403.2 113.2,439.2 83.5,428.5 84,425.7",105.6,416.3],[300,2,0,0,0,"128.3,403.5 157.5,411.9 141.9,449.4 113.2,439.3",135.3,426.1],[301,2,0,2,0,"157.6,412.3 166,414.6 186.2,424.6 169.5,459.4 141.9,449.5",163.9,435.9],[302,2,0,2,0,"143.8,450.7 169.3,459.4 150.3,500.4 125.5,490.4",147.3,475.2],[303,2,0,0,0,"117.4,441.2 143.7,450.4 125.3,490.2 99.7,479.9",121.6,465.4],[304,2,0,2,0,"85.2,429.8 81.6,461.1 70.7,467.8 99.5,479.7 117.4,441.1",95.3,454.6],[305,2,0,2,0,"62.6,471.9 86.9,481.6 72,514.3 35,498.1 54.8,476.4",63.0,492.2],[306,2,0,0,0,"87,481.8 117.7,494.2 102.3,527.6 72,514.4",94.8,504.5],[307,2,0,2,0,"117.8,494.2 147.5,506.3 131.3,540.5 102.3,527.8",124.8,517.2],[308,2,0,2,0,"95.6,525.2 131.2,540.6 118.3,568.5 82.8,553.4",107.0,546.9],[309,2,0,0,0,"59.9,509.5 95.5,525.2 82.6,553 47,537.5",71.2,531.3],[310,2,0,2,0,"4.2,515 33.7,498.1 59.8,509.5 46.8,537.2 4.6,519.2",34.2,516.6],[311,2,0,2,0,"5.6,526.4 48.4,544.8 35,574.6 10,563.6",25.0,550.9],[312,2,0,0,0,"48.7,545.3 82.3,559.9 68.4,589.8 35,574.7",58.6,567.5],[313,2,0,2,0,"82.3,560 115.3,574.5 100.9,604.8 68.4,589.9",91.8,582.3],[314,2,0,2,0,"74.4,593.1 100.9,604.9 83.5,642.2 57.1,630.6",79.0,617.7],[315,2,0,0,0,"48.2,581.1 74.3,593 57,630.4 30.6,618.9",52.5,605.8],[316,2,0,2,0,"10.2,563.8 48.1,581.1 30.5,618.8 15.8,612.4",26.6,590.8],[317,2,0,2,0,"17,620 53.1,635.9 36.5,676.8 23.3,672.6",32.8,647.6],[318,2,0,2,0,"53.2,636.2 79.7,647.8 61.7,685.6 36.6,676.9",57.8,661.3],[319,2,0,3,0,"23.3,672.7 61.7,685.7 45.5,723.2 29.1,720.3",40.1,697.5],[320,2,0,3,0,"74.1,685 101.9,696 85.6,730.6 56.6,725.5",79.3,709.0],[321,2,0,1,0,"102,696 85.6,730.7 116.8,736.4 133.4,715.6 139.8,711.2",110.5,717.5],[322,2,0,1,0,"146.5,663.5 179.6,677.5 166.3,696.8 149,706.7 129.9,699.3",153.4,686.0],[323,2,0,0,0,"118.8,651.6 146.5,663.4 129.8,699.1 101.8,688.1",124.2,675.5],[324,2,0,2,0,"91.7,639.8 118.6,651.5 101.7,687.9 74.2,677.1",96.5,664.0],[325,2,0,2,0,"108.1,605.5 137.2,618 121.2,652.1 91.9,639.7",114.6,628.8],[326,2,0,0,0,"137.3,618 166.5,630.5 150.6,664.7 121.2,652.2",143.9,641.3],[327,2,0,3,0,"166.5,630.6 194.3,642.1 184.5,670.4 180.3,677.4 150.6,664.8",173.1,654.1],[328,2,0,1,0,"181.3,585.6 203.5,595.3 196.7,636.3 164.2,622.5",186.0,611.1],[329,2,0,0,0,"154.6,573.6 181.2,585.4 164.2,622.3 137.3,611.1",159.3,598.1],[330,2,0,2,0,"128.6,561.6 154.6,573.5 137.2,610.8 110.7,599.7",132.7,586.4],[331,2,0,2,0,"149.2,517.9 171.8,528.9 151.8,571.6 128.7,561.5",150.3,545.0],[332,2,0,0,0,"171.9,528.9 194.8,540.1 175.2,582.3 151.8,571.8",173.4,555.8],[333,2,0,3,0,"195,540.3 214.7,549.6 203.6,595.1 175.2,582.4",196.7,568.1],[334,2,0,3,0,"218.8,493.8 199.1,534.8 216.6,543.5 217.3,541.5 244.2,529.2 243.7,527.2 230.8,509.2 236.6,503",221.2,521.0],[335,2,0,0,0,"194.8,481.7 218.1,493.5 198.9,534.8 175.4,523.5",196.8,508.4],[336,2,0,2,0,"171.9,469.7 194.7,481.4 175.3,523.2 152.1,512.1",173.5,496.6],[337,2,0,2,0,"191.7,427.7 200.4,431.4 213,447.6 196.4,481.8 172.2,469.7",193.4,455.5],[338,2,0,0,0,"213.1,448.6 237.2,478.8 241.4,499.3 237.6,502.9 196.6,482.2",219.9,478.3]],"outlines":["247.4,10.2 248.2,17 85.4,332.9 48,383.8 47.6,387.2 92.6,385.9 165.5,407.6 190.5,419 193.9,419.4 196.5,423.2 206.7,428.8 241.4,473.7 245.7,489 246.5,496.2 243.5,499.2 243.1,503 238.9,509.3 249.5,523.8 254.6,524.6 256.3,528.9 331.8,553 335.1,553 338.1,556 408.1,579.3 421.7,581.4 424.6,584.8 434.8,590.8 491.2,618.8 495.5,618.8 498,622.1 506.5,623.4 587.1,605.6 593.9,602.2 597.2,603.1 633.3,595.4 693.5,601.4 697.8,600.5 704.5,602.6 816.5,610.7 820.7,610.3 824.1,612.4 866.1,617.5 904.3,620 914.5,623.4 917.9,623.4 923.4,628.5 973.8,649.3 976.4,648.9 1064.6,457.2 1064.2,454.6 1054,447 1005.2,402.9 1001,402.1 995.9,394.4 928.9,334.6 924.6,333.8 923,329.5 837.3,252.3 835.2,250.6 833,251.5 830.5,250.6 828.8,248.1 829.2,245.6 776.6,198.1 755,187.4 751.2,188.7 748.6,188.3 747,187 746.1,183.6 673.2,152.2 670.2,152.2 667.6,149.3 621.4,128.5 598.5,123 594.3,123 590.9,120.4 521.8,108.6 518.4,109.4 513.7,106.9 434.8,93.3 431,94.6 428.4,93.7 425.9,91.2 389.9,84 388.2,81.4 385.6,80.6 381.4,82.7 371.2,80.2 368.6,77.2 371.6,67.4 371.2,54.3 362.3,50 357.2,50 355.1,47.5 290.2,24.6 256.7,4.2 254.6,4.2 251.2,9.8","31.5,393.1 82.8,427.5 84.9,430.5 82,458.9 79,462.7 55.2,475.8 35.3,497.9 4.3,514.9 28.9,720.5 116.7,736.2 133.7,715 165.9,697.2 185,669.6 196.9,634.9 203.7,594.2 216,544.5 218.1,541.1 244,529.3 243.1,526.3 232.1,510.6 232.9,506.8 241.4,499.2 237.6,480.1 200.3,431.3 193.5,428.8 191,426.6 166.4,414.8 88.3,391.4"]};
 /* ====================================================== */
@@ -978,15 +787,19 @@ const $ = s => document.querySelector(s);
 const SVGNS = 'http://www.w3.org/2000/svg';
 const el = (tag, attrs, parent) => { const e = document.createElementNS(SVGNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
 
+const FREE = new Set(CONFIG.freeMain), PART = new Set(CONFIG.partial);
 const plots = DATA.plots.map(r => {
-  const p = {n:r[0], m:r[1], line:r[2], forest:!!(r[3]&1), corner:!!(r[3]&2), s:r[4], pts:r[5], cx:r[6], cy:r[7]};
-  p.per = (p.forest ? CONFIG.rate.forest : p.corner ? CONFIG.rate.corner : CONFIG.rate.base) + (p.m === 2 ? CONFIG.rate.quarter : 0);
-  p.price = p.per * CONFIG.sotok;
+  const p = {n:r[0], m:r[1], line:r[2], forest:!!(r[3]&1), corner:!!(r[3]&2), pts:r[5], cx:r[6], cy:r[7]};
+  p.vip = p.m === 2; p.partial = PART.has(p.n);
+  p.s = (p.vip || p.partial || FREE.has(p.n)) ? 0 : 2;
+  p.price = CONFIG.priceFrom[p.m];
   return p;
 });
 const byN = new Map(plots.map(p => [p.n, p]));
-const place = p => p.m === 2 ? 'Лісовий квартал' : 'Основний масив, лінія ' + p.line;
-const tagsOf = p => [p.forest ? 'Біля лісу' : '', p.corner ? 'Кутова' : ''].filter(Boolean);
+const place = p => p.vip ? 'VIP-сектор' : 'Основний масив, лінія ' + p.line;
+const tagsOf = p => [p.vip ? 'VIP-сектор' : '', p.partial ? 'Неповна' : '', p.partial ? 'Фасадна' : '', p.forest ? 'Біля лісу' : '', p.corner ? 'Кутова' : ''].filter(Boolean);
+const priceText = p => p.s === 2 ? 'Продано' : p.partial ? 'Ціна за запитом' : 'від ' + fmt(p.price);
+const areaText = p => p.partial ? 'неповна, уточнюйте' : '12 соток (0,12 га)';
 
 /* contacts */
 document.querySelectorAll('[data-tel]').forEach(a => { a.textContent = CONFIG.phoneText; a.href = CONFIG.phoneHref; });
@@ -1002,25 +815,22 @@ addEventListener('scroll', onScroll, {passive:true}); onScroll();
 $('#nav').addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
 
 /* numbers */
-const counts = [0,1,2].map(s => plots.filter(p => p.s === s).length);
+const forSale = plots.filter(p => p.s === 0).sort((a, b) => a.vip - b.vip || a.n - b.n);
+const nMain = forSale.filter(p => !p.vip).length, nVip = forSale.filter(p => p.vip).length, nSold = plots.length - forSale.length;
 $('#st-total').textContent = plots.length;
-$('#st-free').textContent = counts[0];
-$('#st-from').textContent = fmt(Math.min(...plots.filter(p => p.s === 0).map(p => p.price)));
-$('#forest-n').textContent = plots.filter(p => p.forest).length;
+$('#st-free').textContent = forSale.length;
+$('#st-from').textContent = fmt(CONFIG.priceFrom[1]);
+const LEG = [['#bfe0b4', 'Вільні', nMain, 'від ' + fmt(CONFIG.priceFrom[1])], ['#ecd49a', 'VIP-сектор', nVip, 'від ' + fmt(CONFIG.priceFrom[2])], ['#2c5546', 'Продані', nSold, '']];
+const fillOf = p => p.s === 2 ? LEG[2][0] : p.vip ? LEG[1][0] : LEG[0][0];
 
-/* hero plan card */
+/* hero plan card + plan legend */
 (function(){
-  const svg = $('#mini'), fill = ['#bfe0b4','#8fbfd3','#2c5546'];
+  const svg = $('#mini');
   DATA.outlines.forEach(o => el('polygon', {points:o, fill:'#1f4a3d'}, svg));
-  plots.forEach(p => el('polygon', {points:p.pts, fill:fill[p.s], stroke:'#0e2620', 'stroke-width':'.8'}, svg));
-  $('#mini-leg').innerHTML = ST_PL.map((t, s) => '<span><i style="background:' + fill[s] + '"></i>' + t + ' <b>' + counts[s] + '</b></span>').join('');
+  plots.forEach(p => el('polygon', {points:p.pts, fill:fillOf(p), stroke:'#0e2620', 'stroke-width':'.8'}, svg));
+  $('#mini-leg').innerHTML = LEG.map(l => '<span><i style="background:' + l[0] + '"></i>' + l[1] + ' <b>' + l[2] + '</b></span>').join('');
+  $('#plan-leg').innerHTML = LEG.map(l => '<span class="chip"><i style="background:' + l[0] + '"></i>' + l[1] + (l[3] ? ' · ' + l[3] : '') + ' <b>' + l[2] + '</b></span>').join('');
 })();
-
-/* gallery tabs */
-document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
-  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === t));
-  ['g1','g2','g3'].forEach(id => { $('#' + id).hidden = id !== t.dataset.g; });
-});
 
 /* ---------- main map ---------- */
 const map = $('#map');
@@ -1030,12 +840,12 @@ let vb = {...VB0};
 const gBase = el('g', {}, map);
 DATA.outlines.forEach(o => el('polygon', {points:o, class:'base'}, gBase));
 el('text', {x:735, y:112, class:'map-note'}, map).textContent = 'Основний масив · №1–297';
-el('text', {x:262, y:652, class:'map-note'}, map).textContent = 'Лісовий квартал · №298–338';
+el('text', {x:262, y:652, class:'map-note'}, map).textContent = 'VIP-сектор · №298–338';
 el('text', {x:520, y:692, class:'map-forest'}, map).textContent = 'ЛІС';
 const gPlots = el('g', {}, map);
 const node = new Map();
 plots.forEach(p => {
-  const g = el('g', {class:'plot s' + p.s, 'data-n':p.n}, gPlots);
+  const g = el('g', {class:'plot s' + p.s + (p.vip ? ' vip' : ''), 'data-n':p.n}, gPlots);
   el('polygon', {points:p.pts}, g);
   el('text', {x:p.cx, y:p.cy}, g).textContent = p.n;
   node.set(p.n, g);
@@ -1099,7 +909,7 @@ map.addEventListener('pointermove', e => {
     hideTip();
   } else if (e.pointerType === 'mouse') {
     const g = e.target.closest && e.target.closest('.plot');
-    if (g) { const p = byN.get(+g.dataset.n); showTip(e.clientX, e.clientY, '№' + p.n + ' · ' + ST[p.s] + (p.s === 2 ? '' : ' · ' + fmt(p.price))); } else hideTip();
+    if (g) { const p = byN.get(+g.dataset.n); showTip(e.clientX, e.clientY, '№' + p.n + ' · ' + (p.s === 2 ? 'Продана' : priceText(p))); } else hideTip();
   }
 });
 function endPtr(e){
@@ -1125,102 +935,35 @@ $('#fs-open').onclick = () => setFS(!mapbox.classList.contains('fs'));
 $('#fs-x').onclick = () => setFS(false);
 function fsCard(p){
   const c = $('#fs-card');
-  c.innerHTML = '<div class="fs-info"><b>№' + p.n + ' · ' + (p.s === 2 ? 'Продано' : fmt(p.price)) + '</b>' + ST[p.s] + ' · ' + place(p) + '</div><button type="button" class="btn btn-fill btn-sm" id="fs-more">Детальніше</button>';
+  c.innerHTML = '<div class="fs-info"><b>№' + p.n + ' · ' + priceText(p) + '</b>' + ST[p.s] + ' · ' + place(p) + '</div><button type="button" class="btn btn-fill btn-sm" id="fs-more">Детальніше</button>';
   c.classList.add('on');
   $('#fs-more').onclick = () => { setFS(false); openPlot(p.n); };
 }
-$('#f-toggle').onclick = () => { const o = $('#filters').classList.toggle('open'); $('#f-toggle').setAttribute('aria-expanded', o); };
 
-/* ---------- filters ---------- */
-const F = {st:new Set([0,1,2]), massif:'', line:'', price:'', forest:false, corner:false, num:''};
-const chipBox = $('#st-chips');
-['var(--free)','var(--hold)','#4f7867'].forEach((c, s) => {
-  const b = document.createElement('button');
-  b.type = 'button'; b.className = 'chip'; b.setAttribute('aria-pressed', 'true');
-  b.innerHTML = '<i style="background:' + c + '"></i>' + ST_PL[s] + ' <b>' + counts[s] + '</b>';
-  b.onclick = () => { F.st.has(s) ? F.st.delete(s) : F.st.add(s); b.setAttribute('aria-pressed', F.st.has(s)); applyFilters(); };
-  chipBox.appendChild(b);
-});
-const lineSel = $('#f-line');
-for (let i = 1; i <= 11; i++) { const o = document.createElement('option'); o.value = i; o.textContent = 'Лінія ' + i; lineSel.appendChild(o); }
-$('#f-massif').onchange = e => { F.massif = e.target.value; if (F.massif === '2') { F.line = ''; lineSel.value = ''; } applyFilters(); };
-lineSel.onchange = e => { F.line = e.target.value; if (F.line) { F.massif = ''; $('#f-massif').value = ''; } applyFilters(); };
-$('#f-price').onchange = e => { F.price = e.target.value; applyFilters(); };
-[['#f-forest','forest'],['#f-corner','corner']].forEach(([id, k]) => { const b = $(id); b.onclick = () => { F[k] = !F[k]; b.setAttribute('aria-pressed', F[k]); applyFilters(); }; });
-$('#f-num').oninput = e => { F.num = e.target.value.replace(/\D/g, ''); applyFilters(); const p = byN.get(+F.num); if (p) select(p.n, false); };
-function syncUI(){
-  document.querySelectorAll('#st-chips .chip').forEach((b, i) => b.setAttribute('aria-pressed', F.st.has(i)));
-  $('#f-forest').setAttribute('aria-pressed', F.forest); $('#f-corner').setAttribute('aria-pressed', F.corner);
-  $('#f-massif').value = F.massif; lineSel.value = F.line; $('#f-price').value = F.price; $('#f-num').value = F.num;
-}
-function resetF(){ F.st = new Set([0,1,2]); F.massif = F.line = F.price = F.num = ''; F.forest = F.corner = false; }
-$('#clear').onclick = () => { resetF(); syncUI(); applyFilters(); };
-function match(p){
-  if (!F.st.has(p.s)) return false;
-  if (F.massif && p.m !== +F.massif) return false;
-  if (F.line && p.line !== +F.line) return false;
-  if (F.forest && !p.forest) return false;
-  if (F.corner && !p.corner) return false;
-  if (F.price) { const [a, b] = F.price.split('-').map(Number); if (p.price < a || p.price >= b) return false; }
-  if (F.num && !String(p.n).startsWith(F.num)) return false;
-  return true;
-}
-let shown = [], limit = 12;
-function applyFilters(){
-  shown = plots.filter(match);
-  const set = new Set(shown.map(p => p.n));
-  plots.forEach(p => node.get(p.n).classList.toggle('dim', !set.has(p.n)));
-  $('#found').textContent = shown.length;
-  limit = 12; renderCards();
-}
-
-/* ---------- variants ---------- */
-(function(){
-  const V = [
-    {t:'Стандартна ділянка', d:'Усередині лінії, з під\'їздом з проїзду. Найдоступніший варіант.', img:'img/dirt-road.jpg', f:p => p.m === 1 && !p.forest && !p.corner, set:() => { F.massif = '1'; F.price = '0-5500'; }},
-    {t:'Кутова ділянка', d:'На краю лінії: менше сусідів і зручніший заїзд.', img:'img/aerial2.jpg', f:p => p.m === 1 && p.corner && !p.forest, set:() => { F.massif = '1'; F.corner = true; F.price = '5500-6500'; }},
-    {t:'Ділянка біля лісу', d:'Південний край масиву, одразу за межею починається ліс.', img:'img/forest-road.jpg', b:'Найпопулярніші', f:p => p.forest, set:() => { F.forest = true; }},
-    {t:'Лісовий квартал', d:'Окремий малий масив на 41 ділянку з власними проїздами.', img:'img/forest-light.jpg', f:p => p.m === 2, set:() => { F.massif = '2'; }}
-  ];
-  const box = $('#vars');
-  V.forEach(v => {
-    const all = plots.filter(v.f), free = all.filter(p => p.s === 0), from = Math.min(...all.map(p => p.price));
-    const c = document.createElement('article'); c.className = 'var';
-    c.innerHTML = '<img src="' + v.img + '" alt="" loading="lazy">' + (v.b ? '<span class="badge">' + v.b + '</span>' : '') + '<div class="var-b">' +
-      '<h3>' + v.t + '</h3><p>' + v.d + '</p><p class="num"><b>' + free.length + '</b> вільних із ' + all.length + '</p>' +
-      '<div class="var-price num">від ' + fmt(from) + '<small>' + fmt(from / CONFIG.sotok) + ' за сотку · перший внесок від ' + fmt(from * 0.3) + '</small></div>' +
-      '<button type="button" class="btn btn-line btn-sm">Показати на генплані</button></div>';
-    c.querySelector('button').onclick = () => { resetF(); F.st = new Set([0]); v.set(); syncUI(); $('#filters').classList.add('open'); applyFilters(); $('#genplan').scrollIntoView({behavior:'smooth'}); };
-    box.appendChild(c);
-  });
-})();
-
-/* ---------- list ---------- */
+/* ---------- list of plots for sale ---------- */
+let limit = 12;
 function renderCards(){
-  const sort = $('#sort').value;
-  const arr = shown.slice().sort((a, b) => sort === 'pa' ? a.price - b.price || a.n - b.n : sort === 'pd' ? b.price - a.price || a.n - b.n : a.n - b.n);
   const box = $('#cards'); box.textContent = '';
-  if (!arr.length) { const d = document.createElement('div'); d.className = 'empty'; d.style.gridColumn = '1/-1'; d.textContent = 'За цими фільтрами ділянок немає. Зніміть частину умов або натисніть «Скинути фільтри».'; box.appendChild(d); }
-  arr.slice(0, limit).forEach(p => {
+  forSale.slice(0, limit).forEach(p => {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'pcard';
-    b.innerHTML = '<span class="row"><span class="no"><i>№' + p.n + '</i></span><span class="pill s' + p.s + '">' + ST[p.s] + '</span></span>' +
-      '<span class="row"><span class="meta">12 соток</span><span class="pr">' + (p.s === 2 ? '—' : fmt(p.price)) + '</span></span>' +
-      '<span class="meta">' + (p.m === 2 ? 'Лісовий квартал' : 'Лінія ' + p.line) + (tagsOf(p).length ? ' · ' + tagsOf(p).join(', ').toLowerCase() : '') + '</span>';
+    const extra = tagsOf(p).filter(t => t !== 'VIP-сектор');
+    b.innerHTML = '<span class="row"><span class="no"><i>№' + p.n + '</i></span><span class="pill ' + (p.vip ? 'vip' : 's0') + '">' + (p.vip ? 'VIP' : 'Вільна') + '</span></span>' +
+      '<span class="row"><span class="meta">' + (p.partial ? 'неповна' : '12 соток') + '</span><span class="pr">' + priceText(p) + '</span></span>' +
+      '<span class="meta">' + (p.vip ? 'VIP-сектор' : 'Лінія ' + p.line) + (extra.length ? ' · ' + extra.join(', ').toLowerCase() : '') + '</span>';
     b.onclick = () => { select(p.n, false); openPlot(p.n); };
     box.appendChild(b);
   });
-  const rest = arr.length - limit, more = $('#more');
+  const rest = forSale.length - limit, more = $('#more');
   more.style.display = rest > 0 ? '' : 'none';
   more.textContent = 'Показати ще ' + Math.min(24, Math.max(rest, 0));
 }
-$('#sort').onchange = renderCards;
 $('#more').onclick = () => { limit += 24; renderCards(); };
 
 /* ---------- selection panel ---------- */
 let sel = null;
 function sideEmpty(){
   $('#side').innerHTML = '<h3>Оберіть ділянку</h3><p>Натисніть на будь-яку ділянку на плані. Тут з\'являться її ціна, статус і розташування.</p>' +
-    '<dl><dt>Вільні</dt><dd class="num">' + counts[0] + '</dd><dt>Заброньовані</dt><dd class="num">' + counts[1] + '</dd><dt>Продані</dt><dd class="num">' + counts[2] + '</dd></dl>';
+    '<dl>' + LEG.map(l => '<dt>' + l[1] + '</dt><dd class="num">' + l[2] + '</dd>').join('') + '</dl>';
 }
 function select(n, scroll){
   const p = byN.get(n); if (!p) return;
@@ -1228,8 +971,8 @@ function select(n, scroll){
   sel = n; const g = node.get(n); g.classList.add('sel'); gPlots.appendChild(g);
   const tags = tagsOf(p).map(t => '<span class="tag">' + t + '</span>').join('');
   $('#side').innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3>Ділянка №' + p.n + '</h3><span class="pill s' + p.s + '">' + ST[p.s] + '</span></div>' +
-    '<div class="price">' + (p.s === 2 ? 'Продано' : fmt(p.price)) + '</div>' +
-    '<dl><dt>Площа</dt><dd>12 соток (0,12 га)</dd><dt>Ціна за сотку</dt><dd class="num">' + (p.s === 2 ? '—' : fmt(p.per)) + '</dd><dt>Масив</dt><dd>' + (p.m === 2 ? 'Лісовий квартал' : 'Основний') + '</dd>' + (p.m === 1 ? '<dt>Лінія</dt><dd>' + p.line + '</dd>' : '') + '</dl>' +
+    '<div class="price">' + priceText(p) + '</div>' +
+    '<dl><dt>Площа</dt><dd>' + areaText(p) + '</dd><dt>Масив</dt><dd>' + (p.vip ? 'VIP-сектор' : 'Основний') + '</dd>' + (p.vip ? '' : '<dt>Лінія</dt><dd>' + p.line + '</dd>') + '</dl>' +
     (tags ? '<div class="tags">' + tags + '</div>' : '') +
     '<div class="acts"><button type="button" class="btn btn-fill" id="s-more">Детальніше</button>' +
     (p.s === 2 ? '' : '<button type="button" class="btn btn-ghost" id="s-book">Записатися на огляд</button>') + '</div>';
@@ -1256,9 +999,9 @@ function openPlot(n){
     '<div class="d-top"><div class="d-head">' +
       '<p class="eyebrow">Земельна ділянка</p>' +
       '<h2 id="d-title">Ділянка №' + p.n + ' <span class="pill s' + p.s + '">' + ST[p.s] + '</span></h2>' +
-      '<p class="lead" style="font-size:16px">12 соток у масиві «Лісова Мрія». ' + place(p) + (tags.length ? ', ' + tags.join(', ').toLowerCase() : '') + '.</p>' +
-      '<div class="d-price">' + (p.s === 2 ? 'Продано' : fmt(p.price)) + (p.s === 2 ? '' : '<small>' + fmt(p.per) + ' за сотку · перший внесок від ' + fmt(p.price * 0.3) + '</small>') + '</div>' +
-      '<div class="d-acts">' + (p.s === 2 ? '<button type="button" class="btn btn-fill" id="d-alt">Показати вільні поруч</button>' : '<button type="button" class="btn btn-fill" id="d-book">Записатися на огляд</button>') +
+      '<p class="lead" style="font-size:16px">' + (p.partial ? 'Неповна фасадна ділянка' : '12 соток') + ' у масиві «Лісова Мрія». ' + place(p) + '.</p>' +
+      '<div class="d-price">' + priceText(p) + (p.s === 2 ? '' : '<small>' + (p.partial ? 'площу й ціну уточнюйте у менеджера' : 'розтермінування до 12 місяців') + '</small>') + '</div>' +
+      '<div class="d-acts">' + (p.s === 2 ? '<button type="button" class="btn btn-fill" id="d-alt">Дивитися ділянки у продажу</button>' : '<button type="button" class="btn btn-fill" id="d-book">Записатися на огляд</button>') +
       '<a class="btn btn-line" href="' + CONFIG.telegramUrl + '" target="_blank" rel="noopener">Написати в Telegram</a></div>' +
       '<p class="fine">Телефон: <a href="' + CONFIG.phoneHref + '">' + CONFIG.phoneText + '</a></p>' +
     '</div>' +
@@ -1268,25 +1011,18 @@ function openPlot(n){
       '<polygon points="' + p.pts + '" fill="#f0a33a" stroke="#fff" stroke-width="2"/>' +
       '<circle cx="' + p.cx + '" cy="' + p.cy + '" r="58" fill="none" stroke="#f0a33a" stroke-width="3"/>' +
     '</svg></div></div>' +
-    '<div class="d-cols"><div><h3>Параметри ділянки</h3><dl class="dl">' +
+    '<div><h3 style="margin-bottom:8px">Параметри ділянки</h3><dl class="dl">' +
       '<dt>Номер на генплані</dt><dd>' + p.n + '</dd>' +
-      '<dt>Площа</dt><dd>0,1200 га (12 соток)</dd>' +
-      '<dt>Масив</dt><dd>' + (p.m === 2 ? 'Лісовий квартал' : 'Основний') + '</dd>' +
-      (p.m === 1 ? '<dt>Лінія</dt><dd>' + p.line + '</dd>' : '') +
+      '<dt>Площа</dt><dd>' + areaText(p) + '</dd>' +
+      '<dt>Масив</dt><dd>' + (p.vip ? 'VIP-сектор' : 'Основний') + '</dd>' +
+      (p.vip ? '' : '<dt>Лінія</dt><dd>' + p.line + '</dd>') +
       '<dt>Особливості</dt><dd>' + (tags.join(', ') || 'стандартна') + '</dd>' +
-      '<dt>Статус</dt><dd>' + ST[p.s] + '</dd></dl></div>' +
-    '<div><h3>Документи і комунікації</h3><dl class="dl">' +
-      '<dt>Кадастровий номер</dt><dd>присвоюється</dd>' +
-      '<dt>Призначення</dt><dd>житлова забудова (02.01)</dd>' +
-      '<dt>Електрика</dt><dd>лінія вздовж проїзду</dd>' +
-      '<dt>Під\'їзд</dt><dd>відсипаний проїзд</dd>' +
-      '<dt>Вода</dt><dd>власна свердловина</dd>' +
-      '<dt>Оформлення</dt><dd>у нотаріуса</dd></dl></div></div>';
+      '<dt>Статус</dt><dd>' + ST[p.s] + '</dd></dl></div>';
   $('#modal').classList.add('open');
   document.body.style.overflow = 'hidden';
   $('#d-x').onclick = closePlot; $('#d-x').focus();
   const b = $('#d-book'); if (b) b.onclick = () => book(n);
-  const a = $('#d-alt'); if (a) a.onclick = () => { closePlot(); resetF(); F.st = new Set([0]); if (p.m === 1) F.line = String(p.line); else F.massif = '2'; syncUI(); applyFilters(); $('#genplan').scrollIntoView({behavior:'smooth'}); };
+  const a = $('#d-alt'); if (a) a.onclick = () => { closePlot(); $('#dilyanky').scrollIntoView({behavior:'smooth'}); };
   try { if (location.hash !== '#plot-' + n) location.hash = 'plot-' + n; } catch (_) {}
 }
 function closePlot(){
@@ -1298,23 +1034,6 @@ $('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closeP
 addEventListener('keydown', e => { if (e.key === 'Escape') { if ($('#modal').classList.contains('open')) closePlot(); else if (mapbox.classList.contains('fs')) setFS(false); else setMenu(false); } });
 function route(){ const m = location.hash.match(/^#plot-(\d+)$/); if (m && byN.has(+m[1])) { select(+m[1], false); openPlot(+m[1]); } }
 addEventListener('hashchange', route);
-
-/* ---------- calculator ---------- */
-(function(){
-  const sel = $('#c-price'), prices = [...new Set(plots.map(p => p.price))].sort((a, b) => a - b);
-  prices.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = fmt(v) + ' · ' + fmt(v / CONFIG.sotok) + ' за сотку'; sel.appendChild(o); });
-  let months = 12;
-  function calc(){
-    const price = +sel.value, pct = +$('#c-down').value, down = price * pct / 100, rest = price - down;
-    $('#c-down-v').textContent = pct + '%';
-    $('#c-o1').textContent = fmt(down);
-    $('#c-o2').textContent = rest > 0 ? fmt(rest / months) : '—';
-    $('#c-o3').textContent = fmt(price);
-  }
-  sel.onchange = calc; $('#c-down').oninput = calc;
-  document.querySelectorAll('#c-term button').forEach(b => b.onclick = () => { months = +b.dataset.m; document.querySelectorAll('#c-term button').forEach(x => x.setAttribute('aria-pressed', x === b)); calc(); });
-  calc();
-})();
 
 /* ---------- lead form ---------- */
 $('#lead').addEventListener('submit', e => {
@@ -1331,8 +1050,8 @@ $('#lead').addEventListener('submit', e => {
   $('#l-done').style.display = 'flex';
 });
 
-(function(){ const r = $('#route'); if (r.scrollWidth > r.clientWidth) r.scrollLeft = r.scrollWidth * 0.255; })();
-sideEmpty(); applyFilters(); applyVB(); route();
+(function(){ const r = $('#route'); if (r.scrollWidth > r.clientWidth) r.scrollLeft = r.scrollWidth; })();
+sideEmpty(); renderCards(); applyVB(); route();
 </script>
 </body>
 </html>
