@@ -6,6 +6,11 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Лісова Мрія: земельні ділянки по 12 соток на межі лісу, с. Здвижівка Бучанського району. Від $6 000, розтермінування до 12 місяців.">
 <title>Лісова Мрія</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%2315352c'/%3E%3Cg fill='none' stroke='%23f0a33a' stroke-width='2.200'%3E%3Cellipse cx='20' cy='20' rx='14' ry='13'/%3E%3Cellipse cx='20.500' cy='19.500' rx='8.500' ry='7.800'/%3E%3Cellipse cx='19.500' cy='20.500' rx='3.500' ry='3.200'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Лісова Мрія: ділянки біля лісу">
+<meta property="og:description" content="Земельні ділянки по 12 соток у с. Здвижівка. Від $6 000, розтермінування до 12 місяців.">
+<meta property="og:image" content="https://rizhok.github.io/lisova-mriya/img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Forum&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -92,7 +97,7 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 @media (max-width:560px){.phone{display:none}.burger{margin-left:auto}.logo b{font-size:22px}.bar{min-height:64px}}
 
 /* hero */
-.hero{position:relative;padding:clamp(120px,13vw,170px) 0 clamp(110px,10vw,150px);color:var(--on-dark);background:var(--deep) url(img/hero.jpg) center/cover no-repeat;overflow:hidden}
+.hero{position:relative;padding:clamp(120px,13vw,170px) 0 clamp(110px,10vw,150px);color:var(--on-dark);background:var(--deep) url(img/hero-real.jpg) center/cover no-repeat;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(9,28,22,.92) 0%,rgba(9,28,22,.66) 48%,rgba(9,28,22,.38) 100%)}
 .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:center}
 .hero-copy{display:flex;flex-direction:column;gap:24px}
@@ -140,6 +145,8 @@ section{padding:clamp(56px,7vw,108px) 0;scroll-margin-top:76px}
 .card .ic{width:52px;height:52px;border-radius:50%;background:#fbe9cd;color:var(--accent-deep);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
 .card .ic svg{width:28px;height:28px}
 .card p{color:var(--muted);font-size:15.5px}
+.goals .var{background:var(--white)}
+.goals .var img{aspect-ratio:16/10.500}
 .card.cta{background:var(--spruce);color:var(--on-dark);justify-content:center;gap:14px}
 .card.cta p{color:var(--on-dark-muted)}
 .card.cta .btn{align-self:flex-start}
@@ -383,7 +390,7 @@ details[open] summary::after{content:"–";background:var(--spruce);color:var(--
 details p{margin-top:12px;color:var(--muted);max-width:68ch}
 
 /* contacts */
-.contact{position:relative;color:var(--on-dark);background:var(--deep) url(img/mist-bg.jpg) center/cover no-repeat}
+.contact{position:relative;color:var(--on-dark);background:var(--deep) url(img/contact-real.jpg) center/cover no-repeat}
 .contact::before{content:"";position:absolute;inset:0;background:rgba(11,33,26,.86)}
 .contact .wrap{position:relative}
 .contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
@@ -478,12 +485,13 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
   <div class="bar">
     <a class="logo" href="#top" aria-label="Лісова Мрія, на початок">
       <svg aria-hidden="true"><use href="#mark"/></svg>
-      <span><b>Лісова Мрія</b><small>ділянки біля лісу</small></span>
+      <span><b>Лісова Мрія</b><small>котеджне містечко</small></span>
     </a>
     <nav class="nav" id="nav" aria-label="Розділи сайту">
       <a href="#genplan">Генплан</a>
       <a href="#dilyanky">Ділянки</a>
       <a href="#perevagy">Переваги</a>
+      <a href="#tsili">Для кого</a>
       <a href="#lokatsiya">Локація</a>
       <a href="#faq">Питання</a>
       <a href="#kontakty">Контакти</a>
@@ -505,9 +513,9 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
   <svg class="rings bl" aria-hidden="true"><use href="#rings"/></svg>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">с. Здвижівка · Бучанський район</p>
+      <p class="eyebrow">Котеджне містечко · с. Здвижівка</p>
       <h1>Своя земля<br>на <span class="hl">узліссі</span></h1>
-      <p class="lead">Ділянки по 12 соток у Бучанському районі. З півдня масив виходить до лісу, а до Оболоні близько 50 хвилин автомобілем.</p>
+      <p class="lead">Тиша, спокій і приватність серед державного лісу. Ділянки по 12 соток у Бучанському районі, до Оболоні близько 45 хвилин автомобілем.</p>
       <div class="hero-cta">
         <a class="btn btn-fill" href="#genplan">Обрати ділянку <svg class="ar" aria-hidden="true"><use href="#arrow"/></svg></a>
         <a class="btn btn-ghost" href="#kontakty">Записатися на огляд</a>
@@ -525,10 +533,10 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
 
 <section class="statbar">
   <div class="wrap"><div>
-    <div class="stat"><b class="num" id="st-total">338</b><span>ділянок у масиві</span></div>
+    <div class="stat"><b class="num">46 га</b><span>загальна площа масиву</span></div>
     <div class="stat"><b class="num" id="st-free">—</b><span>у продажу зараз</span></div>
     <div class="stat"><b class="num">12 соток</b><span>площа кожної, приблизно 30 × 40 м</span></div>
-    <div class="stat"><b class="num">≈ 50 хв</b><span>автомобілем до Оболоні</span></div>
+    <div class="stat"><b class="num">44 хв</b><span>автомобілем до Оболоні</span></div>
   </div></div>
 </section>
 
@@ -584,12 +592,26 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       <h2>Чому «Лісова Мрія»</h2>
     </div>
     <div class="grid3 swipe">
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 4l7 9h-4l6 8h-5l5 7H9l5-7H9l6-8h-4z"/><path d="M18 28v5"/></svg></span><h3>Ліс одразу за ділянкою</h3><p>З півдня масив межує з лісом. Частина ділянок виходить прямо до узлісся.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 4l7 9h-4l6 8h-5l5 7H9l5-7H9l6-8h-4z"/><path d="M18 28v5"/></svg></span><h3>Ліс одразу за ділянкою</h3><p>Довкола масиву державне лісництво. Частина ділянок виходить прямо до узлісся.</p></div>
       <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 12l20-5 4 17-20 5z"/><path d="M16 9.500l4 17M8 20.500l20-5"/></svg></span><h3>Рівні ділянки по 12 соток</h3><p>Стандартна ділянка має 0,12 га. Більшість прямокутні: зручно поставити будинок, сад і паркомісце.</p></div>
       <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M13 32L16 4M23 32L20 4M18 8v4M18 16v4M18 24v4"/></svg></span><h3>Проїзд до кожної ділянки</h3><p>Основний масив розбитий на 11 ліній. Між рядами прокладено проїзди, тож жодна ділянка не залишається без під'їзду.</p></div>
       <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="5" y="7" width="26" height="24" rx="2"/><path d="M5 14h26M11 4v6M25 4v6M12 21h4M20 21h4M12 26h4"/></svg></span><h3>Розтермінування до 12 місяців</h3><p>Ділянку можна оплатити частинами протягом року. Умови розповість менеджер.</p></div>
-      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 33s10-9.500 10-18a10 10 0 10-20 0c0 8.500 10 18 10 18z"/><circle cx="18" cy="15" r="3.500"/></svg></span><h3>Близько 50 хвилин до Оболоні</h3><p>Дорога йде Гостомельським шосе та Великою Кільцевою. До Гостомеля 15 хвилин, до Бучі 20.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M18 33s10-9.500 10-18a10 10 0 10-20 0c0 8.500 10 18 10 18z"/><circle cx="18" cy="15" r="3.500"/></svg></span><h3>45 хвилин до Оболоні</h3><p>Найшвидша дорога йде через Гостомель. До супермаркетів, ТРЦ і кінотеатру в Бучі 20 хвилин.</p></div>
       <div class="card cta"><h3>Подивіться ділянку наживо</h3><p>Менеджер зустріне на місці та покаже межі ділянки, проїзди й ліс поруч.</p><a class="btn btn-fill btn-sm" href="#kontakty">Записатися на огляд</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="goals" id="tsili">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Цілі придбання</p>
+      <h2>Для чого купують ділянку тут</h2>
+    </div>
+    <div class="grid3 swipe">
+      <article class="var"><img src="img/t1.jpg" alt="Галявина серед молодих сосен" loading="lazy"><div class="var-b"><h3>Для себе</h3><p>Місце, де ранок починається зі співу пташок, а не з шуму міста. Сосни, тиша і власний простір замість оренди.</p></div></article>
+      <article class="var"><img src="img/t2.jpg" alt="Сосновий ліс" loading="lazy"><div class="var-b"><h3>Під бізнес</h3><p>Заміські будинки під оренду мають попит. У містечку передбачена обслуговуюча компанія, яка стежить за територією.</p></div></article>
+      <article class="var"><img src="img/t3.jpg" alt="Сонячна галявина на межі лісу" loading="lazy"><div class="var-b"><h3>Під інвестицію</h3><p>Земля майже не потребує витрат на утримання, а почати можна з відносно невеликого бюджету.</p></div></article>
     </div>
   </div>
 </section>
@@ -599,8 +621,8 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Локація</p>
-      <h2>Здвижівка, Бучанський район. Близько 50 хвилин від Оболоні</h2>
-      <p class="lead">З Оболоні дорога йде Великою Кільцевою та Гостомельським шосе, далі через Гостомель.</p>
+      <h2>Здвижівка, Бучанський район. 45 хвилин від Оболоні</h2>
+      <p class="lead">З Оболоні найшвидше їхати через Гостомель дорогою Т-10-11, це 41 км.</p>
     </div>
     <div class="loc">
       <div class="route" id="route">
@@ -641,7 +663,7 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
           <g transform="translate(560 318)">
             <rect x="-62" y="-22" width="124" height="44" rx="12" fill="#fff"/>
             <path d="M-44 4h-3v-6l3-1 3-6h12l4 6 4 1v6h-3a3 3 0 01-6 0h-8a3 3 0 01-6 0z" fill="#15352c"/>
-            <text x="14" y="6" text-anchor="middle" class="rm-b">≈ 50 хв</text>
+            <text x="14" y="6" text-anchor="middle" class="rm-b">44 хв</text>
           </g>
           <g transform="translate(342 237)">
             <circle r="66" fill="#15352c" stroke="#f0a33a" stroke-width="2"/>
@@ -654,17 +676,17 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       </div>
       <div class="times">
         <ul>
-          <li class="hl"><span>Київ, Оболонь<small>близько 40 км</small></span><b>≈ 50 хв</b></li>
+          <li class="hl"><span>Київ, Оболонь<small>41 км</small></span><b>44 хв</b></li>
           <li><span>Гостомель<small>16 км</small></span><b>15 хв</b></li>
-          <li><span>Бородянка<small>14 км</small></span><b>18 хв</b></li>
-          <li><span>Буча<small>17 км</small></span><b>20 хв</b></li>
+          <li><span>Буча: Avenir Plaza, супермаркети, кінотеатр<small>18 км</small></span><b>20 хв</b></li>
           <li><span>Ірпінь<small>22 км</small></span><b>30 хв</b></li>
+          <li><span>Київ, ТРЦ Lavina Mall<small>31 км</small></span><b>33 хв</b></li>
           <li><span>Київ, Майдан Незалежності<small>45 км</small></span><b>≈ 1 год</b></li>
         </ul>
         <a class="btn btn-fill" href="https://www.google.com/maps/dir/?api=1&destination=50.6545,30.0666" target="_blank" rel="noopener">Прокласти маршрут <svg class="ar" aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
     </div>
-    <div class="loc-foot"><span>Час автомобілем без урахування заторів у години пік. Схема спрощена.</span><span class="num">Координати масиву: 50.6545, 30.0666</span></div>
+    <div class="loc-foot"><span>Час автомобілем за Google Maps за звичайного руху, без заторів у години пік. Схема спрощена.</span><span class="num">Координати масиву: 50.6545, 30.0666</span></div>
   </div>
 </section>
 
@@ -682,7 +704,7 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       <details><summary>Як забронювати ділянку?</summary><p>Залиште заявку з номером ділянки або напишіть менеджеру в Telegram. Після бронювання ділянка зникає з продажу на генплані.</p></details>
       <details><summary>Чи можна будувати будинок?</summary><p>Так, на ділянці можна звести будинок. На 12 сотках вміщуються будинок, господарські споруди і сад.</p></details>
       <details><summary>Як подивитися ділянку наживо?</summary><p>Запишіться на огляд через форму або телефоном. Менеджер зустріне на місці, покаже межі ділянки та сусідні варіанти.</p></details>
-      <details><summary>Скільки їхати до Києва?</summary><p>До Оболоні близько 40 км, це приблизно 50 хвилин без заторів. До центру міста близько години.</p></details>
+      <details><summary>Скільки їхати до Києва?</summary><p>До Оболоні 41 км, це близько 45 хвилин за звичайного руху. До ТРЦ Lavina Mall 33 хвилини, до центру міста близько години.</p></details>
     </div>
   </div>
 </section>
@@ -734,7 +756,7 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
       <div>
         <a class="logo" href="#top" style="color:#fff;margin-bottom:16px">
           <svg aria-hidden="true"><use href="#mark"/></svg>
-          <span><b>Лісова Мрія</b><small>ділянки біля лісу</small></span>
+          <span><b>Лісова Мрія</b><small>котеджне містечко</small></span>
         </a>
         <p>Земельні ділянки по 12 соток на межі лісу.<br>с. Здвижівка, Бучанський район, Київська область</p>
       </div>
@@ -747,7 +769,7 @@ footer{background:var(--deep);color:var(--on-dark-muted);padding:56px 0 40px;fon
         <ul><li><a class="num" data-tel href="#"></a></li><li><a data-tg href="#" target="_blank" rel="noopener">Telegram менеджера</a></li><li>Щодня з 9:00 до 20:00</li></ul>
       </div>
     </div>
-    <p class="legal">© 2026 «Лісова Мрія». Ціни вказані в доларах США для орієнтиру, наявність і точну вартість ділянки уточнюйте у менеджера. Генплан побудований за схемою поділу, межі орієнтовні. Фото ілюстративні.</p>
+    <p class="legal">© 2026 «Лісова Мрія». Ціни вказані в доларах США для орієнтиру, наявність і точну вартість ділянки уточнюйте у менеджера. Генплан побудований за схемою поділу, межі орієнтовні.</p>
   </div>
 </footer>
 
@@ -817,7 +839,6 @@ $('#nav').addEventListener('click', e => { if (e.target.closest('a')) setMenu(fa
 /* numbers */
 const forSale = plots.filter(p => p.s === 0).sort((a, b) => a.vip - b.vip || a.n - b.n);
 const nMain = forSale.filter(p => !p.vip).length, nVip = forSale.filter(p => p.vip).length, nSold = plots.length - forSale.length;
-$('#st-total').textContent = plots.length;
 $('#st-free').textContent = forSale.length;
 $('#st-from').textContent = fmt(CONFIG.priceFrom[1]);
 const LEG = [['#bfe0b4', 'Вільні', nMain, 'від ' + fmt(CONFIG.priceFrom[1])], ['#ecd49a', 'VIP-сектор', nVip, 'від ' + fmt(CONFIG.priceFrom[2])], ['#2c5546', 'Продані', nSold, '']];
